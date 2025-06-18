@@ -1,0 +1,250 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "cargo@1.85.0": {
+      "last_modified": "2025-03-11T17:52:14Z",
+      "resolved": "github:NixOS/nixpkgs/0d534853a55b5d02a4ababa1d71921ce8f0aee4c#cargo",
+      "source": "devbox-search",
+      "version": "1.85.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/cmiczpf80qdp9vnbckpk6cp8yclbni6y-cargo-1.85.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/cmiczpf80qdp9vnbckpk6cp8yclbni6y-cargo-1.85.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qzkb9zmyccr38rdv8glk6i9l2wc761cw-cargo-1.85.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qzkb9zmyccr38rdv8glk6i9l2wc761cw-cargo-1.85.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/bpv800il54d82d67ibfi3l4kgxcpw0w9-cargo-1.85.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/bpv800il54d82d67ibfi3l4kgxcpw0w9-cargo-1.85.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wvcl683adl5vsc2873rdcs255zq3j7yk-cargo-1.85.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wvcl683adl5vsc2873rdcs255zq3j7yk-cargo-1.85.0"
+        }
+      }
+    },
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2025-05-20T08:00:33Z",
+      "resolved": "github:NixOS/nixpkgs/2f9173bde1d3fbf1ad26ff6d52f952f9e9da52ea?lastModified=1747728033&narHash=sha256-NnXFQu7g4LnvPIPfJmBuZF7LFy%2Ffey2g2%2BLCzjQhTUk%3D"
+    },
+    "kind@0.27.0": {
+      "last_modified": "2025-05-16T20:19:48Z",
+      "resolved": "github:NixOS/nixpkgs/12a55407652e04dcf2309436eb06fef0d3713ef3#kind",
+      "source": "devbox-search",
+      "version": "0.27.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/hxi2yz0v53i2vdjgrpiiw5f1l1xrn8ra-kind-0.27.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/hxi2yz0v53i2vdjgrpiiw5f1l1xrn8ra-kind-0.27.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/0sa4hv12sq8q3m73g2kdav18yb0jbnmm-kind-0.27.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/0sa4hv12sq8q3m73g2kdav18yb0jbnmm-kind-0.27.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dkm6ibjbk5ra51cvr637iy2gfcrlbqp0-kind-0.27.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/dkm6ibjbk5ra51cvr637iy2gfcrlbqp0-kind-0.27.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1f4qk0ga3550d8w4lvqvrf5jrjz59kdy-kind-0.27.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/1f4qk0ga3550d8w4lvqvrf5jrjz59kdy-kind-0.27.0"
+        }
+      }
+    },
+    "kubernetes-helm@3.17.3": {
+      "last_modified": "2025-05-16T20:19:48Z",
+      "resolved": "github:NixOS/nixpkgs/12a55407652e04dcf2309436eb06fef0d3713ef3#kubernetes-helm",
+      "source": "devbox-search",
+      "version": "3.17.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mg9rya9swd6lymmarlgjmx2m037ydngc-kubernetes-helm-3.17.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mg9rya9swd6lymmarlgjmx2m037ydngc-kubernetes-helm-3.17.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/kd9x5i47ydamzw514a6lc6r1i0ybiygn-kubernetes-helm-3.17.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/kd9x5i47ydamzw514a6lc6r1i0ybiygn-kubernetes-helm-3.17.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/kiy0fscxlhdyy1v7rj290g0vbwa62m3i-kubernetes-helm-3.17.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/kiy0fscxlhdyy1v7rj290g0vbwa62m3i-kubernetes-helm-3.17.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/z8fh9w8y3hlckw7zqi29hgfz0x5gyi0s-kubernetes-helm-3.17.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/z8fh9w8y3hlckw7zqi29hgfz0x5gyi0s-kubernetes-helm-3.17.3"
+        }
+      }
+    },
+    "rustup@1.27.1": {
+      "last_modified": "2025-05-16T20:19:48Z",
+      "plugin_version": "0.0.1",
+      "resolved": "github:NixOS/nixpkgs/12a55407652e04dcf2309436eb06fef0d3713ef3#rustup",
+      "source": "devbox-search",
+      "version": "1.27.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/k6cwh3783zrxiqqyzbj6mnrfqbqlbkgj-rustup-1.27.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/k6cwh3783zrxiqqyzbj6mnrfqbqlbkgj-rustup-1.27.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/y4x5l59dq2ayl74b7n9s1bk10gnbvnif-rustup-1.27.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/y4x5l59dq2ayl74b7n9s1bk10gnbvnif-rustup-1.27.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/sf8gwlgwgg0ik0scq7719ja356m0yqfs-rustup-1.27.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/sf8gwlgwgg0ik0scq7719ja356m0yqfs-rustup-1.27.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/vg6d0qm7mpmsmm03h8fm68cffxjkqrvr-rustup-1.27.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/vg6d0qm7mpmsmm03h8fm68cffxjkqrvr-rustup-1.27.1"
+        }
+      }
+    },
+    "wash-cli@0.29.2": {
+      "last_modified": "2025-05-16T20:19:48Z",
+      "resolved": "github:NixOS/nixpkgs/12a55407652e04dcf2309436eb06fef0d3713ef3#wash-cli",
+      "source": "devbox-search",
+      "version": "0.29.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/96zm2b1x77v6yaq0b91qzhdl2x13xkwa-wash-cli-0.29.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/96zm2b1x77v6yaq0b91qzhdl2x13xkwa-wash-cli-0.29.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/f7z05rkkzahvqcgc6sb9jsjv9hcqkyys-wash-cli-0.29.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/f7z05rkkzahvqcgc6sb9jsjv9hcqkyys-wash-cli-0.29.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/myrw2ai6czshw6f4skpq1cshx7fxndja-wash-cli-0.29.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/myrw2ai6czshw6f4skpq1cshx7fxndja-wash-cli-0.29.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/svdr9kq4rhrwwxwqqhp9kj4rnkn9zp8f-wash-cli-0.29.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/svdr9kq4rhrwwxwqqhp9kj4rnkn9zp8f-wash-cli-0.29.2"
+        }
+      }
+    }
+  }
+}
