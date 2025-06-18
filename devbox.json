@@ -4,13 +4,16 @@
     "kind@0.27.0",
     "rustup@1.27.1",
     "cargo@1.85.0",
-    "wash-cli@0.29.2",
+    "wash-cli@0.39.0",
     "kubernetes-helm@3.17.3",
+    "jq@1.7.1",
   ],
   "shell": {
     "init_hook": [
       "rustup default stable",
       "rustup target add wasm32-wasip1",
+      "rustup target add wasm32-wasip2",
+      "rustup target add wasm32-unknown-unknown",
     ],
     "scripts": {},
   },
