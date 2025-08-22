@@ -1,0 +1,5 @@
+package wasmcloud-tutorial:calculator;
+
+world app {
+    import wasmcloud-tutorial:adder/add@0.1.0;
+}
