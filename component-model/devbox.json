@@ -3,8 +3,8 @@
   "packages": [
     "python@3.14",
     "uv@0.8.2",
-    "rustup@1.27.1",
-    "cargo@1.85.0",
+    "rustup@1.28.2",
+    "cargo@1.88.0",
     "wasmtime@33.0.0",
     "cargo-component@0.21.1",
     "wasm-tools@1.236.0",
