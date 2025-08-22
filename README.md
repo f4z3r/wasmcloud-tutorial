@@ -36,6 +36,10 @@ Alliance](https://component-model.bytecodealliance.org/introduction.html).
 
 ## NATS
 
+[NATS](https://nats.io/) is a central technology to wasmCloud, essentially enabling the
+communication between WebAssembly components running on the platform. Check out a small tutorial
+on NATS under [`nats/`](./nats/).
+
 ## wasmCloud Components
 
 ## wasmCloud Providers
