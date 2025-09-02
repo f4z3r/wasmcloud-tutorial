@@ -4,5 +4,3 @@ target/
 # Wash build artifacts
 build/
 
-wit/deps/
-
