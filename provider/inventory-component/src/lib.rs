@@ -1,6 +1,6 @@
+use wasmcloud_component::http;
 use wasmcloud_component::http::ErrorCode;
 use wasmcloud_component::wasi::keyvalue::*;
-use wasmcloud_component::{http, info};
 
 struct Component;
 
@@ -16,19 +16,18 @@ impl http::Server for Component {
             .query()
             .map(ToString::to_string)
             .unwrap_or_default();
-        let name = match query.split("=").collect::<Vec<&str>>()[..] {
-            ["name", name] => name,
-            _ => "World",
+        let item = match query.split("=").collect::<Vec<&str>>()[..] {
+            ["item", item] => item,
+            _ => "Missed",
         };
-
-        info!("Greeting {name}");
-
         let bucket = store::open("default").map_err(|e| {
             ErrorCode::InternalError(Some(format!("failed to open KV bucket: {e:?}")))
         })?;
-        let count = atomics::increment(&bucket, &name, 1).map_err(|e| {
+        let count = atomics::increment(&bucket, &item, 1).map_err(|e| {
             ErrorCode::InternalError(Some(format!("failed to increment counter: {e:?}")))
         })?;
-
-        Ok(http::Response::new(format!("Hello x{count}, {name}!\n")))}
+        Ok(http::Response::new(format!(
+            "{item} added x{count} times to inventory!\n"
+        )))
+    }
 }

@@ -44,6 +44,8 @@ on NATS under [`nats/`](./nats/).
 
 ## wasmCloud Providers
 
+Providers expands the functionality space of components. Check out the tutorial at [provider/](./provider/) to learn more about it.
+
 ## License
 
 ![GitHub License](https://img.shields.io/github/license/f4z3r/wasmcloud-tutorial)
