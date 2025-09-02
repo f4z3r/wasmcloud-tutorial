@@ -190,13 +190,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "http-hello-world"
-version = "0.1.0"
-dependencies = [
- "wasmcloud-component",
-]
-
-[[package]]
 name = "id-arena"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -211,6 +204,13 @@ dependencies = [
  "equivalent",
  "hashbrown 0.15.2",
  "serde",
+]
+
+[[package]]
+name = "inventory-component"
+version = "0.1.0"
+dependencies = [
+ "wasmcloud-component",
 ]
 
 [[package]]
