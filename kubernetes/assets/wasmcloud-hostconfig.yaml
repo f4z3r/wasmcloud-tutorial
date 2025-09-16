@@ -1,0 +1,25 @@
+apiVersion: k8s.wasmcloud.dev/v1alpha1
+kind: WasmCloudHostConfig
+metadata:
+  name: wasmcloud-host
+  namespace: wasmcloud
+  labels:
+    app.kubernetes.io/name: wasmcloud-platform
+    app.kubernetes.io/instance: wasmcloud-platform
+    app.kubernetes.io/version: "1.2.1"
+spec:
+  hostReplicas: 1
+  lattice: default
+  version: 1.8.0
+  enableStructuredLogging: false
+  controlTopicPrefix: wasmbus.ctl
+  leafNodeDomain: leaf
+  logLevel: INFO
+  natsAddress: nats://nats-headless.wasmcloud.svc.cluster.local
+  secretsTopicPrefix: wasmcloud.secrets
+  schedulingOptions:
+    daemonset: true
+    podTemplateAdditions:
+      nodeSelector:
+        node-role.kubernetes.io/application-platform: "true"
+
