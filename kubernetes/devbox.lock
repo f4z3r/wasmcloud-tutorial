@@ -689,6 +689,54 @@
           "store_path": "/nix/store/gdgwhf2jiwqfv5gya5pwddfwkm09ldbi-wasmtime-33.0.0"
         }
       }
+    },
+    "wkg@0.11.0": {
+      "last_modified": "2025-07-28T17:09:23Z",
+      "resolved": "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b#wkg",
+      "source": "devbox-search",
+      "version": "0.11.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/sl8iyk6g2ka0ckd1hiqyzvlgs0pl7qrk-wkg-0.11.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/sl8iyk6g2ka0ckd1hiqyzvlgs0pl7qrk-wkg-0.11.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/i2k2x0rshvi7ddwg6sr1k1qb9yyh9iyn-wkg-0.11.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/i2k2x0rshvi7ddwg6sr1k1qb9yyh9iyn-wkg-0.11.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/bs223yjbiafwg8rwabyjqsds0036xsvl-wkg-0.11.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/bs223yjbiafwg8rwabyjqsds0036xsvl-wkg-0.11.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/fdnyrvi5bdgjqaqr02xk7f7prazyjcza-wkg-0.11.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/fdnyrvi5bdgjqaqr02xk7f7prazyjcza-wkg-0.11.0"
+        }
+      }
     }
   }
 }

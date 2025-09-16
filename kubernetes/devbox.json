@@ -14,6 +14,7 @@
     "natscli@0.2.2",
     "wash-cli@0.39.0",
     "k3d@5.8.3",
+    "wkg@0.11.0",
   ],
   "shell": {
     "init_hook": [

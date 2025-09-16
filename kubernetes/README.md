@@ -77,6 +77,9 @@ wash ui
 
 ```bash
 kubectl apply -f ./assets/wasmcloud-hello-world-app.yaml
+# reach it via ingress
+kubectl apply -f ./assets/ingress.yaml
+curl localhost:8081/hello
 ```
 
 ## Todos
