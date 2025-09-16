@@ -10,23 +10,31 @@ backing services, and to manage wasmCloud itself of course.
 ## Creating a Kubernetes Cluster
 
 First, we need to create a Kubernetes cluster. This will host our wasmCloud runtime and some
-backing services. The cluster we create here is a single node cluster for demonstration purposes.
+backing services.
 
 ```bash
-kind create cluster -n wasmcloud
+k3d registry create wasmcloud-demo.localhost --port 5000
+k3d cluster create wasmcloud-demo -c assets/k3d-config.yaml
 ```
 
-## Deploy an Ingress
-
-Next, we deploy an ingress. This is important as we will want to speak to our application once it is
-deployed. We will use a NginX ingress controller for this, and use an external simulated
-loadbalancer to route the traffic into the cluster:
+The cluster we create here is a five node cluster for demonstration purposes. One node is for the
+Kubernetes itself, and of the remaining four worker nodes we will use two for our application
+platform and two for our service provisioning. Once the cluster is up and running, let us label the
+nodes accordingly:
 
 ```bash
-kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml
-# generate the loadbalancer
-cloud-provider-kind
+kubectl label node k3d-wasmcloud-demo-agent-0 "node-role.kubernetes.io/worker=true"
+kubectl label node k3d-wasmcloud-demo-agent-0 "node-role.kubernetes.io/application-platform=true"
+kubectl label node k3d-wasmcloud-demo-agent-1 "node-role.kubernetes.io/worker=true"
+kubectl label node k3d-wasmcloud-demo-agent-1 "node-role.kubernetes.io/application-platform=true"
+kubectl label node k3d-wasmcloud-demo-agent-2 "node-role.kubernetes.io/worker=true"
+kubectl label node k3d-wasmcloud-demo-agent-2 "node-role.kubernetes.io/infra-platform=true"
+kubectl label node k3d-wasmcloud-demo-agent-3 "node-role.kubernetes.io/worker=true"
+kubectl label node k3d-wasmcloud-demo-agent-3 "node-role.kubernetes.io/infra-platform=true"
 ```
+
+K3d will by default deploy a loadbalancer, meaning that any ingress route you expose will be
+available on `localhost:8081` on your machine.
 
 ## Deploy the Application Platform
 
@@ -46,14 +54,8 @@ helm upgrade --install \
   oci://ghcr.io/wasmcloud/charts/wasmcloud-platform:0.1.2 \
   --dependency-update
 
-# update to get host, cannot be done in one because of missing CRDs
-helm upgrade --install \
-  -n wasmcloud \
-  wasmcloud-platform \
-  --values ./assets/platform-values.yaml \
-  oci://ghcr.io/wasmcloud/charts/wasmcloud-platform:0.1.2 \
-  --dependency-update \
-  --set "hostConfig.enabled=true"
+# wait for the NATS and the operator to come up, then
+kubectl apply -f ./assets/wasmcloud-hostconfig.yaml
 ```
 
 ## Launch wash UI
@@ -69,6 +71,12 @@ Then, one can simply run the following command to access the wash UI under `loca
 
 ```bash
 wash ui
+```
+
+## Launch a Demo Application
+
+```bash
+kubectl apply -f ./assets/wasmcloud-hello-world-app.yaml
 ```
 
 ## Todos

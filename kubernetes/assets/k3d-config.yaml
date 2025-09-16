@@ -1,0 +1,14 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: wasmcloud-demo
+servers: 1
+agents: 4
+image: rancher/k3s:v1.33.4-k3s1
+ports:
+  - port: 8081:80
+    nodeFilters:
+      - loadbalancer
+registries:
+  use:
+    - k3d-wasmcloud-demo.localhost:5000

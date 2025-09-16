@@ -1,7 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
   "packages": [
-    "kind@0.29.0",
     "kubernetes-helm@3.18.4",
     "kubectl@1.33.3",
     "python@3.14",
@@ -12,9 +11,9 @@
     "cargo-component@0.21.1",
     "wasm-tools@1.236.0",
     "wac-cli@latest",
-    "cloud-provider-kind@0.6.0",
     "natscli@0.2.2",
     "wash-cli@0.39.0",
+    "k3d@5.8.3",
   ],
   "shell": {
     "init_hook": [
