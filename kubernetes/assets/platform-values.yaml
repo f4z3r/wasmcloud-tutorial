@@ -3,6 +3,13 @@ nameOverride: "wasmcloud-platform"
 
 nats:
   enabled: true
+  natsBox:
+    deployment:
+      podTemplate:
+        merge:
+          spec:
+            nodeSelector:
+              node-role.kubernetes.io/application-platform: "true"
   podTemplate:
     merge:
       spec:
@@ -47,6 +54,9 @@ operator:
   nameOverride: "wasmcloud-operator"
   nodeSelector:
     node-role.kubernetes.io/application-platform: "true"
+  image:
+    tag: "0.4.2"
+
 
 host:
   enabled: false

@@ -1,0 +1,13 @@
+[package]
+name = "echo"
+edition = "2021"
+version = "0.1.0"
+
+[workspace]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wit-bindgen = "0.43"
+wasmcloud-component = "0.2.0"
