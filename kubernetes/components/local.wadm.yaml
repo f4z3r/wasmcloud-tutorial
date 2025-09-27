@@ -11,7 +11,7 @@ spec:
       type: component
       properties:
         # To use the locally compiled code in this folder, use the line below instead after running `wash build`:
-        image: file://./build/echo_s.wasm
+        image: file://./echo/build/echo_s.wasm
         id: echo
       traits:
         # Govern the spread/scheduling of the component

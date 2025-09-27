@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hello-world
+  name: demo-application
   namespace: wasmcloud
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -13,6 +13,20 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: hello-world
+                name: demo-application
                 port:
                   number: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-application
+  namespace: wasmcloud
+spec:
+  ports:
+    - port: 8000
+      protocol: TCP
+      targetPort: 8000
+  selector:
+    app.kubernetes.io/instance: wasmcloud-host
+    app.kubernetes.io/name: wasmcloud

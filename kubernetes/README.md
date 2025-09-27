@@ -7,13 +7,14 @@ This showcases how to combine Kubernetes and wasmCloud to build a platform with 
 and easy combination of applications, while providing the full flexibility of Kubernetes to deploy
 backing services, and to manage wasmCloud itself of course.
 
-## Creating a Kubernetes Cluster
+## The Application Platform
+
+### Creating a Kubernetes Cluster
 
 First, we need to create a Kubernetes cluster. This will host our wasmCloud runtime and some backing
 services.
 
 ```bash
-k3d registry create wasmcloud-demo.localhost --port 5000
 k3d cluster create wasmcloud-demo -c assets/k3d-config.yaml
 ```
 
@@ -36,7 +37,7 @@ kubectl label node k3d-wasmcloud-demo-agent-3 "node-role.kubernetes.io/infra-pla
 K3d will by default deploy a loadbalancer, meaning that any ingress route you expose will be
 available on `localhost:8081` on your machine.
 
-## Deploy the Application Platform
+### Deploy the Application Platform
 
 Finally, let us deploy wasmCloud as the application runtime. We will do this in the `wasmcloud`
 namespace. First we create the namespace, then we install the infrastructure required for wasmCloud,
@@ -58,33 +59,78 @@ helm upgrade --install \
 kubectl apply -f ./assets/wasmcloud-hostconfig.yaml
 ```
 
-## Launch wash UI
+### Launch wash UI
 
-First, we need to expose the NATS endpoints to our local machine to ensure that `wash` can retrive
-the necessary information from NATS:
+Now that our wasmCloud platform is up and running, we will launch a small UI just to be able to
+validate that everything is as it should. For this we need to be able to talk to NATS to check what
+is running. Expose these ports locally:
 
 ```bash
 kubectl port-forward -n wasmcloud service/nats 4222:4222 4223:4223
 ```
 
-Then, one can simply run the following command to access the wash UI under `localhost:3030`:
+Then, one can simply run the following command to expose the wash UI under `localhost:3030`:
 
 ```bash
 wash ui
 ```
 
-## Launch a Demo Application
+## Applications
+
+Now that the application platform is up and running, we can start deploying applications to it.
+
+### Deploy a Demo Application
+
+The demo application consists of the following:
+
+- An HTTP server to accept requests. This is provided as a host capability.
+- A NATS client to publish a message to a NATS subject. This is also provided as a host capability.
+- Our custom component which publishes a message to the `echo.response` subject on every HTTP
+  request it receives.
+
+You can deploy the entire application using:
 
 ```bash
-kubectl apply -f ./assets/wasmcloud-hello-world-app.yaml
-# reach it via ingress
+kubectl apply -f ./components/k8s.wadm.yaml
+# deploy an ingress to make it reachable from outside Kubernetes
 kubectl apply -f ./assets/ingress.yaml
-curl localhost:8081/hello
 ```
 
-## Todos
+### Access the Application
 
-- install redis on the cluster
-- deploy an application that uses 2 components and the redis capability provider
-- deploy opa on the platform
-- define securiy policies via policy server
+Before accessing the application, make sure that you listen to the `echo.response` NATS subject to
+see that the application does what it is supposed to do. For this we use the port-forward from the
+wash UI and subscribe to that subject:
+
+```sh
+nats -s 127.0.0.1:4222 sub "echo.response"
+```
+
+Then either run the command below or access the URL in your browser:
+
+```sh
+curl http://localhost:8081/hello
+```
+
+You should get a response in the browser:
+
+```
+Published a message to echo.response subject
+```
+
+And see a message being published on the subject:
+
+```console
+$ nats -s 127.0.0.1:4222 sub "echo.response"
+14:52:13 Subscribing on echo.response
+[#1] Received on "echo.response"
+This is a test
+```
+
+## Teardown
+
+To teardown the Kubernetes cluster, run:
+
+```bash
+k3d cluster delete wasmcloud-demo
+```

@@ -9,6 +9,3 @@ ports:
   - port: 8081:80
     nodeFilters:
       - loadbalancer
-registries:
-  use:
-    - k3d-wasmcloud-demo.localhost:5000
