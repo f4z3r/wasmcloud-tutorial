@@ -1,12 +1,11 @@
 name: echo-component
 
 on:
-  merge_group:
   push:
     branches:
       - main
     tags:
-      - echo-component-v[0-9]+.[0-9]+.[0-9]+-*
+      - echo-component-v[0-9]+.[0-9]+.[0-9]+
   pull_request:
     branches: [main]
     paths:
