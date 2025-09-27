@@ -1,0 +1,7 @@
+name = "booking-master"
+language = "rust"
+type = "component"
+
+[component]
+wit_world = "booking-management"
+wasm_target = "wasm32-wasip2"

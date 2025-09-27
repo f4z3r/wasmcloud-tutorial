@@ -1,0 +1,15 @@
+package demo:booking-master@0.0.1;
+
+interface booking-management {
+  add-booking: func(id: u32, subject: string) -> result<_, string>;
+
+  get-booking: func(id: u32) -> result<string, string>;
+
+  delete-booking: func(id: u32) -> result<_, string>;
+}
+
+world echo {
+  import wasi:logging/logging@0.1.0-draft;
+
+  export booking-management;
+}

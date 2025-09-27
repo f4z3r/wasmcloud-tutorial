@@ -5,3 +5,6 @@ type = "component"
 [component]
 wit_world = "echo"
 wasm_target = "wasm32-wasip2"
+
+[overrides]
+"demo:booking-master" = { path = "../booking-master/wit" }

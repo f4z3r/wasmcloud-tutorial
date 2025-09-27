@@ -1,4 +1,4 @@
-name: echo-component
+name: Echo component
 
 on:
   push:
