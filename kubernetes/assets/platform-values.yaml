@@ -57,7 +57,6 @@ operator:
   image:
     tag: "0.4.2"
 
-
 host:
   enabled: false
 

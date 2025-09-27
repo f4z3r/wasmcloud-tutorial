@@ -1,6 +1,7 @@
 # NATS
 
 <!--toc:start-->
+
 - [NATS](#nats)
   - [Introduction](#introduction)
   - [Running NATS](#running-nats)
@@ -12,7 +13,7 @@
   - [Object Storage](#object-storage)
   - [Monitoring](#monitoring)
   - [A Sample Client Application](#a-sample-client-application)
-<!--toc:end-->
+  <!--toc:end-->
 
 > This directory provides a DevBox environment. Run `devbox shell` to have all the tools required to
 > execute the commands listed here and in subdirectories.

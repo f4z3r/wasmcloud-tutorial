@@ -15,4 +15,4 @@ jobs:
         uses: creyD/prettier_action@v4.6
         with:
           prettier_options: -c --ignore-unknown .
-          dry: 'true'
+          dry: "true"

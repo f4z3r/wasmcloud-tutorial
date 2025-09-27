@@ -33,8 +33,8 @@ spec:
         # Establish a unidirectional link from this http server provider (the "source")
         # to the `http-component` component (the "target") so the component can handle incoming HTTP requests.
         #
-        # The source (this provider) is configured such that the HTTP server listens on 0.0.0.0:8000. 
-        # When running the application on Kubernetes with the wasmCloud operator, you can change the 
+        # The source (this provider) is configured such that the HTTP server listens on 0.0.0.0:8000.
+        # When running the application on Kubernetes with the wasmCloud operator, you can change the
         # port but the address must be 0.0.0.0.
         - type: link
           properties:
@@ -46,8 +46,8 @@ spec:
               - name: default-http
                 properties:
                   address: 0.0.0.0:8000
-        # When running the application on Kubernetes with the wasmCloud operator, 
-        # the operator automatically creates a Kubernetes service for applications that use 
+        # When running the application on Kubernetes with the wasmCloud operator,
+        # the operator automatically creates a Kubernetes service for applications that use
         # the httpserver provider with a daemonscaler.
         - type: daemonscaler
           properties:

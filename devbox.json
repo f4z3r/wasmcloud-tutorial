@@ -1,13 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
-  "packages": [
-    "prettier@3.6.2",
-  ],
+  "packages": ["prettier@3.6.2"],
   "shell": {
     "init_hook": [],
-    "scripts":   {
+    "scripts": {
       "format": "prettier --write .",
       "check-format": "prettier -c --ignore-unknown ."
-    },
-  },
+    }
+  }
 }

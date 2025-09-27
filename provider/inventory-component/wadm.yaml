@@ -1,9 +1,9 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: inventory-component 
+  name: inventory-component
   annotations:
-    description: 'Example component to understand the connection between components, providers and backends.'
+    description: "Example component to understand the connection between components, providers and backends."
 spec:
   components:
     - name: inventory-component

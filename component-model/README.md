@@ -41,8 +41,8 @@ world adder {
 }
 ```
 
-This defines a versioned package, which contains a single interface definition. The `adder`
-world then exports the `add` interface. On the other side, check out the second component's WIT:
+This defines a versioned package, which contains a single interface definition. The `adder` world
+then exports the `add` interface. On the other side, check out the second component's WIT:
 
 ```wit
 package wasmcloud-tutorial:calculator;
@@ -75,7 +75,6 @@ If you ran the two `componentize-py` commands, you should have a `adder.wasm` co
 You will find a Rust component under [`rs-component`](./rs-component/). This will use the Python
 component and return an executable component that performs an arithmetic operation. Check out its
 README on how to build the component.
- 
 
 If you ran the two `cargo` commands, you should have a `calculator.wasm` component in the
 `rs-component/target/wasm32-wasip1/release/` directory.

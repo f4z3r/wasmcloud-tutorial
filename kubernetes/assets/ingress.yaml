@@ -7,13 +7,12 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
-      paths:
-      - path: /hello
-        pathType: Prefix
-        backend:
-          service:
-            name: hello-world
-            port:
-              number: 8000
-
+    - http:
+        paths:
+          - path: /hello
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-world
+                port:
+                  number: 8000
