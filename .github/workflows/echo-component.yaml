@@ -1,0 +1,90 @@
+name: echo-component
+
+on:
+  merge_group:
+  push:
+    branches:
+      - main
+    tags:
+      - echo-component-v[0-9]+.[0-9]+.[0-9]+-*
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/echo-component.yml
+      - kubernetes/components/echo/**
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  WASH_VERSION: "0.39.0"
+  WASM_TOOLS_VERSION: "1.236.0"
+
+defaults:
+  run:
+    working-directory: ./kubernetes/components/echo
+
+jobs:
+  build:
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: taiki-e/install-action@ad95d4e02e061d4390c4b66ef5ed56c7fee3d2ce # v2.58.17
+        with:
+          tool: ${{ format('wash@{0},wasm-tools@{1}', env.WASH_VERSION, env.WASM_TOOLS_VERSION) }}
+      - name: wash build
+        run: |
+          wash build
+
+
+  publish:
+    runs-on: ubuntu-22.04
+    needs: [build]
+    if: ${{ startswith(github.ref, 'refs/tags/component-echo') }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      # Determine tag version (if this is a release tag), without the 'v'
+      - name: Determine version
+        id: meta
+        shell: bash
+        env:
+          REF: ${{ github.ref }}
+          REF_PREFIX: ${{ format('refs/tags/{0}', component-echo-v) }}
+        run: |
+          export VERSION=${REF#$REF_PREFIX};
+          echo -e "version=${VERSION}" >> $GITHUB_OUTPUT;
+          echo "bin-name=build/echo_s.wasm" >> $GITHUB_OUTPUT;
+          echo "ref-prefix=$REF_PREFIX" >> $GITHUB_OUTPUT;
+          echo "wasmcloud-toml-path=wasmcloud.toml" >> $GITHUB_OUTPUT;
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
+        with:
+          path: artifacts
+      - uses: taiki-e/install-action@ad95d4e02e061d4390c4b66ef5ed56c7fee3d2ce # v2.58.17
+        with:
+          tool: ${{ format('wash@{0},wasm-tools@{1}', env.WASH_VERSION, env.WASM_TOOLS_VERSION) }}
+      # Push the project to GitHub Container Registry under various tags, if this is a release tag
+      - name: Push SHA-tagged WebAssembly binary to GHCR
+        if: ${{ startsWith(github.ref, steps.meta.outputs.ref-prefix) }}
+        env:
+          WASH_REG_USER: ${{ github.repository_owner }}
+          WASH_REG_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ github.sha }} artifacts/${{ steps.meta.outputs.bin-name }}
+      - name: Push version-tagged WebAssembly binary to GHCR
+        if: ${{ startsWith(github.ref, steps.meta.outputs.ref-prefix) }}
+        env:
+          WASH_REG_USER: ${{ github.repository_owner }}
+          WASH_REG_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ steps.meta.outputs.version }} artifacts/${{ steps.meta.outputs.bin-name }}
