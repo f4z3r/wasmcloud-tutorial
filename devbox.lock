@@ -1,0 +1,57 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2025-09-25T01:21:52Z",
+      "resolved": "github:NixOS/nixpkgs/e57b3b16ad8758fd681511a078f35c416a8cc939?lastModified=1758763312&narHash=sha256-puBMviZhYlqOdUUgEmMVJpXqC%2FToEqSvkyZ30qQ09xM%3D"
+    },
+    "prettier@3.6.2": {
+      "last_modified": "2025-09-18T16:33:27Z",
+      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#prettier",
+      "source": "devbox-search",
+      "version": "3.6.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/s160mwzqzw1148h4vwq7pkys1bsflfmn-prettier-3.6.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/s160mwzqzw1148h4vwq7pkys1bsflfmn-prettier-3.6.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lksdp4x8sy3cydwz42nwbf1l4z5an8kr-prettier-3.6.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lksdp4x8sy3cydwz42nwbf1l4z5an8kr-prettier-3.6.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/gw89c6hrs9lid718q8s7s9vd8y81211v-prettier-3.6.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/gw89c6hrs9lid718q8s7s9vd8y81211v-prettier-3.6.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/y051bmlqrpk345mv98nhfskvg1f2k4jq-prettier-3.6.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/y051bmlqrpk345mv98nhfskvg1f2k4jq-prettier-3.6.2"
+        }
+      }
+    }
+  }
+}

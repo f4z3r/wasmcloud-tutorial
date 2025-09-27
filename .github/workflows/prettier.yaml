@@ -1,0 +1,18 @@
+name: General quality gates
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Lint code
+        uses: creyD/prettier_action@v4.6
+        with:
+          prettier_options: -c --ignore-unknown .
+          dry: 'true'
