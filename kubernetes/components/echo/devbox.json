@@ -3,7 +3,6 @@
   "packages": [
     "rustup@1.28.2",
     "cargo@1.89.0",
-    "wasmtime@33.0.0",
     "cargo-component@0.21.1",
     "wasm-tools@1.239.0",
     "wash-cli@0.39.0",
