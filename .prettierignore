@@ -1,0 +1,7 @@
+debug/
+target/
+.devbox/
+.venv/
+.mypy_cache/
+tags
+.vscode/
