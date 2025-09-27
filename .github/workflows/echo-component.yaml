@@ -22,8 +22,6 @@ concurrency:
 
 env:
   CARGO_TERM_COLOR: always
-  WASH_VERSION: "0.39.0"
-  WASM_TOOLS_VERSION: "1.236.0"
 
 defaults:
   run:
@@ -37,13 +35,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-      - uses: taiki-e/install-action@ad95d4e02e061d4390c4b66ef5ed56c7fee3d2ce # v2.58.17
-        with:
-          tool: ${{ format('wash@{0},wasm-tools@{1}', env.WASH_VERSION, env.WASM_TOOLS_VERSION) }}
-      - name: wash build
-        run: |
-          wash build
-
+      - name: Install devbox
+        uses: jetify-com/devbox-install-action@v0.12.0
+      - name: Run arbitrary commands
+        run: devbox run -- wash build
 
   publish:
     runs-on: ubuntu-22.04
@@ -70,9 +65,8 @@ jobs:
       - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
         with:
           path: artifacts
-      - uses: taiki-e/install-action@ad95d4e02e061d4390c4b66ef5ed56c7fee3d2ce # v2.58.17
-        with:
-          tool: ${{ format('wash@{0},wasm-tools@{1}', env.WASH_VERSION, env.WASM_TOOLS_VERSION) }}
+      - name: Install devbox
+        uses: jetify-com/devbox-install-action@v0.12.0
       # Push the project to GitHub Container Registry under various tags, if this is a release tag
       - name: Push SHA-tagged WebAssembly binary to GHCR
         if: ${{ startsWith(github.ref, steps.meta.outputs.ref-prefix) }}
@@ -80,11 +74,11 @@ jobs:
           WASH_REG_USER: ${{ github.repository_owner }}
           WASH_REG_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ github.sha }} artifacts/${{ steps.meta.outputs.bin-name }}
+          devbox run -- wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ github.sha }} artifacts/${{ steps.meta.outputs.bin-name }}
       - name: Push version-tagged WebAssembly binary to GHCR
         if: ${{ startsWith(github.ref, steps.meta.outputs.ref-prefix) }}
         env:
           WASH_REG_USER: ${{ github.repository_owner }}
           WASH_REG_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ steps.meta.outputs.version }} artifacts/${{ steps.meta.outputs.bin-name }}
+          devbox run -- wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ steps.meta.outputs.version }} artifacts/${{ steps.meta.outputs.bin-name }}
