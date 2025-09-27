@@ -47,7 +47,7 @@ jobs:
   publish:
     runs-on: ubuntu-22.04
     needs: [build]
-    if: ${{ startswith(github.ref, 'refs/tags/component-echo') }}
+    if: ${{ startswith(github.ref, 'refs/tags/echo-component-v') }}
     permissions:
       contents: read
       packages: write
@@ -59,7 +59,7 @@ jobs:
         shell: bash
         env:
           REF: ${{ github.ref }}
-          REF_PREFIX: 'refs/tags/component-echo-v'
+          REF_PREFIX: 'refs/tags/echo-component-v'
         run: |
           export VERSION=${REF#$REF_PREFIX};
           echo -e "version=${VERSION}" >> $GITHUB_OUTPUT;
