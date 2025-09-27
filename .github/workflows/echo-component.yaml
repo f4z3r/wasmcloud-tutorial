@@ -21,38 +21,56 @@ concurrency:
 
 env:
   CARGO_TERM_COLOR: always
-
-defaults:
-  run:
-    working-directory: ./kubernetes/components/echo
+  WASH_VERSION: "0.39.0"
+  WASM_TOOLS_VERSION: "1.239.0"
 
 jobs:
-  build:
+  echo-build:
     permissions:
       contents: read
       checks: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Fetch Rust build cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            kubernetes/components/echo/target/
+          key: cargo-${{ hashFiles('kubernetes/components/echo/Cargo.lock') }}
       - name: Install devbox
         uses: jetify-com/devbox-install-action@a0d2d53632934ae004f878c840055956d9f741b0 # v0.14.0
         with:
           project-path: ./kubernetes/components/echo
-          enable-cache: 'true'
+          enable-cache: "true"
           devbox-version: 0.16.0
       - name: Build component
-        run: devbox run -- wash build
+        working-directory: kubernetes/components/echo
+        run: devbox run build
+      - name: Save Rust build cache
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            kubernetes/components/echo/target/
+          key: cargo-${{ hashFiles('kubernetes/components/echo/Cargo.lock') }}
+      - name: Upload artifact for publish step
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ startswith(github.ref, 'refs/tags/echo-component-v') }}
+        with:
+          name: echo-component
+          path: kubernetes/components/echo/build/echo_s.wasm
 
-  publish:
+  echo-publish:
     runs-on: ubuntu-22.04
-    needs: [build]
+    needs: [echo-build]
     if: ${{ startswith(github.ref, 'refs/tags/echo-component-v') }}
     permissions:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493
-      # Determine tag version (if this is a release tag), without the 'v'
+      - name: Checkout
+        uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493
       - name: Determine version
         id: meta
         shell: bash
@@ -62,30 +80,25 @@ jobs:
         run: |
           export VERSION=${REF#$REF_PREFIX};
           echo -e "version=${VERSION}" >> $GITHUB_OUTPUT;
-          echo "bin-name=build/echo_s.wasm" >> $GITHUB_OUTPUT;
-          echo "ref-prefix=$REF_PREFIX" >> $GITHUB_OUTPUT;
-          echo "wasmcloud-toml-path=wasmcloud.toml" >> $GITHUB_OUTPUT;
-      - uses: actions/download-artifact@4a24838f3d5601fd639834081e118c2995d51e1c
+      - name: Download artifact from build step
+        uses: actions/download-artifact@4a24838f3d5601fd639834081e118c2995d51e1c
         with:
-          path: artifacts
-      - name: Install devbox
-        uses: jetify-com/devbox-install-action@a0d2d53632934ae004f878c840055956d9f741b0 # v0.14.0
+          path: kubernetes/components/echo/artifacts
+      - name: Install wash
+        uses: taiki-e/install-action@ad95d4e02e061d4390c4b66ef5ed56c7fee3d2ce # v2.58.17
         with:
-          project-path: ./kubernetes/components/echo
-          enable-cache: 'true'
-          devbox-version: 0.16.0
-      # Push the project to GitHub Container Registry under various tags, if this is a release tag
-      - name: Push SHA-tagged WebAssembly binary to GHCR
-        if: ${{ startsWith(github.ref, steps.meta.outputs.ref-prefix) }}
-        env:
-          WASH_REG_USER: ${{ github.repository_owner }}
-          WASH_REG_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          devbox run -- wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ github.sha }} artifacts/${{ steps.meta.outputs.bin-name }}
+          tool: ${{ format('wash@{0},wasm-tools@{1}', env.WASH_VERSION, env.WASM_TOOLS_VERSION) }}
+      # - name: Push SHA-tagged WebAssembly binary to GHCR
+      #   env:
+      #     WASH_REG_USER: ${{ github.repository_owner }}
+      #     WASH_REG_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+      #   working-directory: kubernetes/components/echo
+      #   run: |
+      #     wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ github.sha }} artifacts/echo_s.wasm
       - name: Push version-tagged WebAssembly binary to GHCR
-        if: ${{ startsWith(github.ref, steps.meta.outputs.ref-prefix) }}
         env:
           WASH_REG_USER: ${{ github.repository_owner }}
           WASH_REG_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: kubernetes/components/echo
         run: |
-          devbox run -- wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ steps.meta.outputs.version }} artifacts/${{ steps.meta.outputs.bin-name }}
+          wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/echo:${{ steps.meta.outputs.version }} artifacts/echo_s.wasm
