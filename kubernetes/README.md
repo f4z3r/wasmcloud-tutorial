@@ -9,8 +9,8 @@ backing services, and to manage wasmCloud itself of course.
 
 ## Creating a Kubernetes Cluster
 
-First, we need to create a Kubernetes cluster. This will host our wasmCloud runtime and some
-backing services.
+First, we need to create a Kubernetes cluster. This will host our wasmCloud runtime and some backing
+services.
 
 ```bash
 k3d registry create wasmcloud-demo.localhost --port 5000

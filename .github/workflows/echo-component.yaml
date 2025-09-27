@@ -76,7 +76,7 @@ jobs:
         shell: bash
         env:
           REF: ${{ github.ref }}
-          REF_PREFIX: 'refs/tags/echo-component-v'
+          REF_PREFIX: "refs/tags/echo-component-v"
         run: |
           export VERSION=${REF#$REF_PREFIX};
           echo -e "version=${VERSION}" >> $GITHUB_OUTPUT;

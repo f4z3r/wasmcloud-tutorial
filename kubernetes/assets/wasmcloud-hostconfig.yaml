@@ -16,4 +16,3 @@ spec:
     podTemplateAdditions:
       nodeSelector:
         node-role.kubernetes.io/application-platform: "true"
-

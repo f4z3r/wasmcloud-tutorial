@@ -8,15 +8,15 @@
     "wasmtime@33.0.0",
     "cargo-component@0.21.1",
     "wasm-tools@1.239.0",
-    "wac-cli@latest",
+    "wac-cli@latest"
   ],
   "shell": {
     "init_hook": [
       "rustup default stable",
       "rustup target add wasm32-wasip1",
       "rustup target add wasm32-wasip2",
-      "rustup target add wasm32-unknown-unknown",
+      "rustup target add wasm32-unknown-unknown"
     ],
-    "scripts": {},
-  },
+    "scripts": {}
+  }
 }
