@@ -73,6 +73,12 @@ Then, one can simply run the following command to access the wash UI under `loca
 wash ui
 ```
 
+
+
+TODO(@f4z3r): continue here
+
+
+
 ## Launch a Demo Application
 
 ```bash
