@@ -50,6 +50,12 @@ Tear down the local wasmCloud instance:
 wash down
 ```
 
+## Check Logs
+
+```sh
+cat ~/.wash/downloads/wasmcloud.log | grep demo.booking-master
+```
+
 ## Deploying on Kubernetes
 
 You can deploy the application on a Kubernetes hosted wasmCloud platform using the following

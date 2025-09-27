@@ -3,6 +3,7 @@ package demo:echo;
 world echo {
   import wasi:logging/logging@0.1.0-draft;
   import wasmcloud:messaging/consumer@0.2.0;
+  import demo:booking-master/booking-management@0.0.1;
 
   export wasi:http/incoming-handler@0.2.2;
 }

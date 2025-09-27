@@ -1,18 +1,18 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: echo
+  name: demo-app
   namespace: wasmcloud
   annotations:
     version: v0.0.1
-    description: "Echo demo server"
+    description: "Some demo application"
 spec:
   components:
     - name: echo
       type: component
       properties:
         # To use the locally compiled code in this folder, use the line below instead after running `wash build`:
-        image: ghcr.io/f4z3r/wasmcloud-tutorial/echo:0.0.1
+        image: ghcr.io/f4z3r/wasmcloud-tutorial/echo:0.0.2
         id: echo
       traits:
         # Govern the spread/scheduling of the component
@@ -29,6 +29,28 @@ spec:
             namespace: wasmcloud
             package: messaging
             interfaces: [consumer]
+        - type: link
+          properties:
+            target:
+              name: booking-master
+            namespace: demo
+            package: booking-master
+            interfaces: [booking-management]
+
+    - name: booking-master
+      type: component
+      properties:
+        # To use the locally compiled code in this folder, use the line below instead after running `wash build`:
+        image: ghcr.io/f4z3r/wasmcloud-tutorial/booking-master:0.0.1
+        id: booking-master
+      traits:
+        # Govern the spread/scheduling of the component
+        - type: spreadscaler
+          properties:
+            instances: 1
+        # Establish a unidirectional link to the messaging capability provider (powered by NATS),
+        # so the `echo` component can make use of messaging interface functionality
+        # (i.e. making interacting with the messaging system, in this case NATS)
 
         # Add a capability provider that enables HTTP access
     - name: httpserver
