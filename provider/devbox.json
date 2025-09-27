@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.0/.schema/devbox.schema.json",
   "packages": [
-    "kind@0.29.0",
+    "kind@0.30.0",
     "rustup@1.28.2",
-    "cargo@1.88.0",
+    "cargo@1.89.0",
     "wash-cli@0.39.0",
-    "kubernetes-helm@3.18.4",
+    "kubernetes-helm@3.19.0",
     "jq@1.8.1",
   ],
   "shell": {
