@@ -53,7 +53,7 @@ impl http::Server for Component {
                     LOG_CONTEXT,
                     &format!("handled GET request for ID {id}"),
                 );
-                Ok(http::Response::new(format!("Booking {id} created\n")))
+                Ok(http::Response::new(format!("Booking {id}: {booking}\n")))
             }
             &http::Method::POST => {
                 let path = request.uri().to_string();
@@ -82,12 +82,31 @@ impl http::Server for Component {
                     LOG_CONTEXT,
                     &format!("handled POST request for ID {id}"),
                 );
-                Ok(http::Response::new(format!("Booking {id}: {booking}\n")))
+                Ok(http::Response::new(format!("Booking {id} created\n")))
             }
-            _ => {
-                // TODO(@f4z3r): support delete
-                panic!("fail");
+            &http::Method::DELETE => {
+                let path = request.uri().to_string();
+                let id = Self::parse_id(&path)
+                    .map_err(|e| http::ErrorCode::InternalError(Some(e.to_string())))?;
+                booking_management::delete_booking(id)
+                    .map_err(|e| http::ErrorCode::InternalError(Some(e.into())))?;
+                consumer::publish(&types::BrokerMessage {
+                    subject: PUBLISH_SUBJECT.into(),
+                    reply_to: None,
+                    body: format!("Deleted booking {id}").into(),
+                })
+                .map_err(|e| http::ErrorCode::InternalError(Some(e.into())))?;
+                log(
+                    Level::Info,
+                    LOG_CONTEXT,
+                    &format!("handled DELETE request for ID {id}"),
+                );
+                Ok(http::Response::new(format!("Deleted booking {id}\n")))
             }
+            m => Ok(http::Response::builder()
+                .status(http::StatusCode::BAD_REQUEST)
+                .body(format!("invalid HTTP method: {m}").into())
+                .map_err(|e| http::ErrorCode::InternalError(Some(e.to_string()))))?,
         }
     }
 }

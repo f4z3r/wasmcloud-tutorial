@@ -64,6 +64,20 @@ Check that the bookings are truly present in Redis:
 docker exec redis redis-cli get "1"
 ```
 
+Finally, you can delete bookings:
+
+```console
+$ curl -X DELETE http://localhost:8000/1
+Deleted booking 1
+```
+
+Which should also create a message on the event stream:
+
+```console
+[#3] Received on "bookings.events"
+Deleted booking 1
+```
+
 Tear down the local wasmCloud instance:
 
 ```sh
