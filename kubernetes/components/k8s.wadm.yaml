@@ -53,7 +53,7 @@ spec:
               config:
                 - name: redis-url
                   properties:
-                    url: redis://redis:6379
+                    url: redis://redis-master.redis.svc.cluster.local:6379
             namespace: wasi
             package: keyvalue
             interfaces: [store]
@@ -63,6 +63,10 @@ spec:
       type: capability
       properties:
         image: ghcr.io/wasmcloud/keyvalue-redis:0.30.0
+      traits:
+        - type: spreadscaler
+          properties:
+            instances: 2
 
     # The HTTP incoming request provider
     - name: httpserver
@@ -70,6 +74,9 @@ spec:
       properties:
         image: ghcr.io/wasmcloud/http-server:0.27.0
       traits:
+        - type: spreadscaler
+          properties:
+            instances: 2
         # Connect the request to our echo component
         - type: link
           properties:
@@ -89,3 +96,7 @@ spec:
       type: capability
       properties:
         image: ghcr.io/wasmcloud/messaging-nats:0.27.0
+      traits:
+        - type: spreadscaler
+          properties:
+            instances: 2

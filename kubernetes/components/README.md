@@ -81,6 +81,7 @@ Deleted booking 1
 Tear down the local wasmCloud instance:
 
 ```sh
+wash app delete demo-app
 wash down
 docker stop redis
 ```

@@ -79,13 +79,24 @@ wash ui
 
 Now that the application platform is up and running, we can start deploying applications to it.
 
+Before we can deploy our application though, we will need a Redis instance. This is because we want
+to use a Redis cluster to back our application persistence.
+
+### Deploy a Redis Cluster
+
+```bash
+kubectl create namespace redis
+# use bitnami helm chart to install redis
+helm install -n redis redis oci://registry-1.docker.io/bitnamicharts/redis -f ./assets/redis-values.yaml
+```
+
 ### Deploy a Demo Application
 
 The demo application consists of the following:
 
 - An HTTP server to accept requests. This is provided as a host capability.
 - A NATS client to publish a message to a NATS subject. This is also provided as a host capability.
-- Our custom component which publishes a message to the `echo.response` subject on every HTTP
+- Our custom component which publishes a message to the `bookings.events` subject on every HTTP
   request it receives.
 
 You can deploy the entire application using:
@@ -98,33 +109,49 @@ kubectl apply -f ./assets/ingress.yaml
 
 ### Access the Application
 
-Before accessing the application, make sure that you listen to the `echo.response` NATS subject to
+Before accessing the application, make sure that you listen to the `bookings.events` NATS subject to
 see that the application does what it is supposed to do. For this we use the port-forward from the
 wash UI and subscribe to that subject:
 
 ```sh
-nats -s 127.0.0.1:4222 sub "echo.response"
+nats -s 127.0.0.1:4222 sub "bookings.events"
 ```
 
 Then either run the command below or access the URL in your browser:
 
-```sh
-curl http://localhost:8081/hello
-```
+```console
+$ curl -X POST http://localhost:8081/bookings/1 -d '{"booking": "This is a sample booking"}'
+Booking 1 created
 
-You should get a response in the browser:
+$ curl -X POST http://localhost:8081/bookings/2 -d '{"booking": "This is a another booking"}'
+Booking 2 created
 
-```
-Published a message to echo.response subject
+$ curl http://localhost:8081/bookings/1
+Booking 1: This is a simple booking
+
+$ curl -X DELETE http://localhost:8081/bookings/2
+Deleted booking 2
 ```
 
 And see a message being published on the subject:
 
 ```console
-$ nats -s 127.0.0.1:4222 sub "echo.response"
-14:52:13 Subscribing on echo.response
-[#1] Received on "echo.response"
-This is a test
+$ nats -s 127.0.0.1:4222 sub "bookings.events"
+18:39:40 Subscribing on bookings.events
+[#1] Received on "bookings.events"
+Created booking 1: This is a sample booking
+
+
+[#2] Received on "bookings.events"
+Created booking 2: This is a another booking
+
+
+[#3] Received on "bookings.events"
+Retrieved booking 1: This is a sample booking
+
+
+[#4] Received on "bookings.events"
+Deleted booking 2
 ```
 
 ## Teardown
