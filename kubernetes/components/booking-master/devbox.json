@@ -16,7 +16,8 @@
       "rustup target add wasm32-unknown-unknown"
     ],
     "scripts": {
-      "build": "wash build"
+      "build": "wash build",
+      "deps": "wkg wit fetch"
     }
   }
 }

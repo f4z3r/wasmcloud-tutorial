@@ -8,5 +8,6 @@ interface booking-management {
 
 world echo {
   import wasi:logging/logging@0.1.0-draft;
+  import wasi:keyvalue/store@0.2.0-draft;
   export booking-management;
 }
