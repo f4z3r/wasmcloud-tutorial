@@ -50,6 +50,22 @@ spec:
         # Establish a unidirectional link to the messaging capability provider (powered by NATS),
         # so the `echo` component can make use of messaging interface functionality
         # (i.e. making interacting with the messaging system, in this case NATS)
+        - type: link
+          properties:
+            target:
+              name: kvredis
+              config:
+                - name: redis-url
+                  properties:
+                    url: redis://0.0.0.0:6379
+            namespace: wasi
+            package: keyvalue
+            interfaces: [store]
+
+    - name: kvredis
+      type: capability
+      properties:
+        image: ghcr.io/wasmcloud/keyvalue-redis:0.30.0
 
         # Add a capability provider that enables HTTP access
     - name: httpserver

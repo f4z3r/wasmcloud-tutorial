@@ -16,44 +16,66 @@ run. Once these exist, launch a local version of wasmCloud:
 wash up -d
 ```
 
+Then, we need a Redis instance to back our key/value provider. In order to do this, we will launch a
+container:
+
+```sh
+docker run -d --rm --name redis -p 6379:6379 redis:8.2.1
+```
+
 Then deploy the application:
 
 ```sh
 wash app deploy local.wadm.yaml
 ```
 
-At this point, connect to your local NATS cluster to subscribe to the `echo.response` subject:
+At this point, connect to your local NATS cluster to subscribe to the `bookings.events` subject:
 
 ```sh
-nats -s 127.0.0.1:4222 sub "echo.response"
+nats -s 127.0.0.1:4222 sub "bookings.events"
 ```
 
 Then you should be able to access the application under `localhost:8000`
 
 ```console
-$ curl http://localhost:8000
-Published a message to echo.response subject
+$ curl -X POST http://localhost:8000/1 -d '{"booking": "This is a simple booking"}'
+Booking 1 created
+
+$ curl http://localhost:8000/1
+Booking 1: This is a simple booking
 ```
 
 You should see a message being published:
 
 ```console
-$ nats -s 127.0.0.1:4222 sub "echo.response"
-15:20:16 Subscribing on echo.response
-[#1] Received on "echo.response"
-This is a test
+$ nats -s 127.0.0.1:4222 sub "bookings.events"
+15:20:16 Subscribing on bookings.events
+[#1] Received on "bookings.events"
+Created booking 1: This is a simple booking
+
+
+[#2] Received on "bookings.events"
+Retrieved booking 1: This is a simple booking
+```
+
+Check that the bookings are truly present in Redis:
+
+```sh
+docker exec redis redis-cli get "1"
 ```
 
 Tear down the local wasmCloud instance:
 
 ```sh
 wash down
+docker stop redis
 ```
 
 ## Check Logs
 
 ```sh
 cat ~/.wash/downloads/wasmcloud.log | grep demo.booking-master
+cat ~/.wash/downloads/wasmcloud.log | grep demo.echo
 ```
 
 ## Deploying on Kubernetes
