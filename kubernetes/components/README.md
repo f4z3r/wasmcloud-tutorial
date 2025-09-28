@@ -5,7 +5,7 @@ via WIT imports/exports. This directory contains the implementation of the indiv
 
 ## Architecture
 
-TODO(@f4z3r): add architecture diagram once application fully done.
+![Application Architecture](./assets/demo-app-architecture.excalidraw.png)
 
 ## Local Testing
 
