@@ -2,8 +2,6 @@ name: Echo component
 
 on:
   push:
-    branches:
-      - main
     tags:
       - echo-component-v[0-9]+.[0-9]+.[0-9]+
   pull_request:

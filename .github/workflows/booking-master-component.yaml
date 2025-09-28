@@ -2,8 +2,6 @@ name: Booking master component
 
 on:
   push:
-    branches:
-      - main
     tags:
       - booking-master-component-v[0-9]+.[0-9]+.[0-9]+
   pull_request:
@@ -59,7 +57,7 @@ jobs:
         if: ${{ startswith(github.ref, 'refs/tags/booking-master-component-v') }}
         with:
           name: booking-master-component
-          path: kubernetes/components/booking-master/build/booking-master_s.wasm
+          path: kubernetes/components/booking-master/build/booking_master_s.wasm
 
   booking-master-publish:
     runs-on: ubuntu-24.04
@@ -94,4 +92,4 @@ jobs:
           WASH_REG_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         working-directory: kubernetes/components/booking-master
         run: |
-          wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/booking-master:${{ steps.meta.outputs.version }} artifacts/booking-master_s.wasm
+          wash push ghcr.io/${{ github.repository_owner }}/wasmcloud-tutorial/booking-master:${{ steps.meta.outputs.version }} artifacts/booking_master_s.wasm
