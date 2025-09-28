@@ -1,0 +1,10 @@
+auth:
+  enabled: false
+
+master:
+  nodeSelector:
+    node-role.kubernetes.io/infra-platform: "true"
+
+replica:
+  nodeSelector:
+    node-role.kubernetes.io/infra-platform: "true"
