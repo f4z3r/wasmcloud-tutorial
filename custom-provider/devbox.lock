@@ -1,0 +1,106 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2025-10-05T02:43:53Z",
+      "resolved": "github:NixOS/nixpkgs/d7f52a7a640bc54c7bb414cca603835bf8dd4b10?lastModified=1759632233&narHash=sha256-krgZxGAIIIKFJS%2BUB0l8do3sYUDWJc75M72tepmVMzE%3D"
+    },
+    "rustup@1.28.2": {
+      "last_modified": "2025-09-18T16:33:27Z",
+      "plugin_version": "0.0.1",
+      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#rustup",
+      "source": "devbox-search",
+      "version": "1.28.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/q70bj005jz3smra5qikxq256rn22fsim-rustup-1.28.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/q70bj005jz3smra5qikxq256rn22fsim-rustup-1.28.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/x2k79iz4pb9my69661c2gg5vm5sgf42q-rustup-1.28.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/x2k79iz4pb9my69661c2gg5vm5sgf42q-rustup-1.28.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qg0riz8jgd02asrjn83bg1ifx9b1bp46-rustup-1.28.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qg0riz8jgd02asrjn83bg1ifx9b1bp46-rustup-1.28.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ra2zx3av6408y4w2mcfryj1p2m69x2j1-rustup-1.28.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ra2zx3av6408y4w2mcfryj1p2m69x2j1-rustup-1.28.2"
+        }
+      }
+    },
+    "wash-cli@0.39.0": {
+      "last_modified": "2025-09-18T16:33:27Z",
+      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#wash-cli",
+      "source": "devbox-search",
+      "version": "0.39.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/zpvim7gy9jin0fv2kch0ahgi2ynnjxs1-wash-cli-0.39.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/zpvim7gy9jin0fv2kch0ahgi2ynnjxs1-wash-cli-0.39.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/x06f183hqq1wq4yviqfvzp47mz3ci39w-wash-cli-0.39.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/x06f183hqq1wq4yviqfvzp47mz3ci39w-wash-cli-0.39.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/7knn1a73aq8vypj7brxv592xjj1j9mx7-wash-cli-0.39.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/7knn1a73aq8vypj7brxv592xjj1j9mx7-wash-cli-0.39.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/zbj27dla2l042x1gcmbwbdnnnmr4amb5-wash-cli-0.39.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/zbj27dla2l042x1gcmbwbdnnnmr4amb5-wash-cli-0.39.0"
+        }
+      }
+    }
+  }
+}

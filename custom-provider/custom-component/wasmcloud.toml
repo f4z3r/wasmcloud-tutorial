@@ -1,0 +1,21 @@
+name = "custom_component"
+version = "0.1.0"
+language = "rust"
+type = "component"
+
+[component]
+wit_world = "component"
+wasm_target = "wasm32-wasip1"
+
+# [registries]
+# [registries.wasmcloud-tutorial]
+# url = "http://localhost:5000"
+# insecure = true
+
+[overrides]
+"wasmcloud-tutorial:key-value-provider" = { path = "../key-value-provider/wit" }
+
+# [registry.pull]
+# sources = [
+#     { target = "wasmcloud-tutorial:key-value-provider", source = "http://localhost:5000/wasmcloud-tutorial/key-value-provider"},
+# ]
