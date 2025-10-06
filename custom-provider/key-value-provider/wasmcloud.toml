@@ -1,0 +1,6 @@
+name = "key-value-provider"
+language = "rust"
+type = "provider"
+
+[provider]
+vendor = "Example Vendor"

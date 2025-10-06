@@ -1,0 +1,32 @@
+[package]
+name = "custom-component"
+edition = "2024"
+version = "0.1.0"
+
+#[workspace]
+
+[package.metadata.component]
+package = "wasmcloud-tutorial:custom-component"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wit-bindgen-rt = { version = "0.44.0", features = ["bitflags"] }
+wasmcloud-component = "0.2.0"
+url = "2"
+
+[package.metadata.component.target]
+path="./wit"
+# name = "custom-component"
+
+[package.metadata.component.target.dependencies]
+"wasmcloud-tutorial:key-value-provider" = { path = "../key-value-provider/wit" }
+"wasi:http" = { path = "./wit/deps/wasi-http-0.2.2" }
+"wasi:clocks" = { path = "./wit/deps/wasi-clocks-0.2.2" }
+"wasi:io" = { path = "./wit/deps/wasi-io-0.2.2" }
+"wasi:random" = { path = "./wit/deps/wasi-random-0.2.2" }
+"wasi:cli" = { path = "./wit/deps/wasi-cli-0.2.2" }
+
+# [package.metadata.component.target.dependencies]
+# "wasmcloud-tutorial:my-provider-name" = { registry = "http://localhost:5000" }

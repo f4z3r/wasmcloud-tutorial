@@ -1,0 +1,15 @@
+package wasmcloud-tutorial:key-value-provider@0.1.0;
+
+interface store {
+    // Retrieve a value associated with a key
+    get: func(key: string) -> result<option<string>, string>;
+
+    // Store a value associated with a key
+    set: func(key: string, value: string) -> result<_, string>;
+}
+
+// All imports and exports our provider can use / must implement.
+world provider {
+    export store;
+}
+

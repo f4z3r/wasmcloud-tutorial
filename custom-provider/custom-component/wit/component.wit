@@ -1,0 +1,6 @@
+package wasmcloud-tutorial:custom-component;
+
+world custom-component {
+  import wasmcloud-tutorial:key-value-provider/store@0.1.0;
+  export wasi:http/incoming-handler@0.2.2;
+}

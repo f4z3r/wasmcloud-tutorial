@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.0/.schema/devbox.schema.json",
+  "packages": [
+    "rustup@1.28.2",
+    "wash-cli@0.39.0",
+  ],
+  "shell": {
+    "init_hook": [
+      "rustup default stable",
+      "rustup target add wasm32-wasip1",
+      "rustup target add wasm32-wasip2",
+      "rustup target add wasm32-unknown-unknown",
+    ],
+    "scripts": {}
+  }
+}

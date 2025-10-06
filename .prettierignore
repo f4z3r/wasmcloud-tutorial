@@ -5,3 +5,5 @@ target/
 .mypy_cache/
 tags
 .vscode/
+devbox.json
+devbox.lock
