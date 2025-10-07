@@ -51,7 +51,7 @@ provider tutorial or in the Kubernetes demo.
 ## wasmCloud Providers
 
 Providers expands the functionality space of components. Check out the tutorial at
-[`provider/`](./provider/) to learn more about it.
+[`custom-provider/`](./custom-provider/) to learn more about it.
 
 ## Kubernetes Demo
 

@@ -10,7 +10,7 @@ your own and only consult the solutions when you are stuck.
 
 ## What is a Provider
 
-A provider is a key part of the webassembly ecosystem that enables components to access external
+A provider is a key part of the WebAssembly ecosystem that enables components to access external
 resources and services such as databases, secret stores, or notification systems. This extends a
 component's functionality beyond a stateless application and enables integration with a broader
 system infrastructure.
@@ -20,8 +20,9 @@ system infrastructure.
 A provider acts as a crucial interface or "glue layer" between a component and a backend service.
 Sometimes like in our case the provider does not rely on any backend service. It translates the
 component's generic, simple calls (like `get` or `set` for a key-value store) into the specific
-commands required by the chosen backend (like a `redis` query or a `postgresql` sql statement). This
-simplifies backend changes to the point where no component code needs to be modified.
+commands required by the chosen backend (like a `redis` query or a `postgresql` SQL statement). This
+simplifies backend changes to the point where no component code needs to be modified when a backend
+is swapped.
 
 ![component-provider-backend](./assets/providersetup.excalidraw.svg)
 
@@ -56,10 +57,10 @@ package wasmcloud-tutorial:key-value-provider@0.1.0;
 
 interface store {
     // Retrieve a value associated with a key
-    get: func(key: string) -> result<option<string>, string>;
+    get: func(key: string) -> option<string>;
 
     // Store a value associated with a key
-    set: func(key: string, value: string) -> result<_, string>;
+    set: func(key: string, value: string);
 }
 
 // All imports and exports our provider can use / must implement.
@@ -84,6 +85,7 @@ provider.
 
 1. **Add a `HashMap` to the `KeyValueStoreProvider` struct:** This will act as our in-memory
    key-value store.
+
    > 💡 **Hint:** To make the shared, mutable HashMap thread-safe in Rust, wrap it in the
    > combination of `Arc` (for shared ownership across threads) and `RwLock` (for safe, concurrent
    > access control).
@@ -109,30 +111,32 @@ pub struct KeyValueStoreProvider {
 
 2.  **Implement the Interface Handler:** Use the `async_trait::Handler` trait on your provider
     struct (`KeyValueStoreProvider`). This trait is the mechanism through which the provider exposes
-    the get and set functions defined in the `WIT` contract, fulfilling the provider's capability
-    role and contains the `get` and `set` functions defined in our `WIT` file. By implementing this
-    trait, our provider fulfills its contract.
+    the `get` and `set` functions defined in the `wit` contract, fulfilling the provider's
+    capability role. By implementing this trait, our provider fulfills its contract.
 
 <details>
   <summary>Solution</summary>
 
 ```rs
 impl Handler<Option<Context>> for KeyValueStoreProvider {
-    async fn get(&self,_ctx: Option<Context>, key: String) -> Result<Result<Option<String>, String>> {
+    async fn get(
+        &self,
+        _ctx: Option<Context>,
+        key: String,
+    ) -> Result<Option<String>, anyhow::Error> {
         let store = self.store.read().await;
-        let result = store.get(&key).cloned();
-
-        if result.is_some() {
-            Ok(Ok(result))
-        } else {
-            Ok(Err(format!("Key '{}' not found", key)))
-        }
+        Ok(store.get(&key).cloned())
     }
 
-    async fn set(&self,_ctx: Option<Context>, key: String, value: String) -> Result<Result<(), String>> {
+    async fn set(
+        &self,
+        _ctx: Option<Context>,
+        key: String,
+        value: String,
+    ) -> Result<(), anyhow::Error> {
         let mut store = self.store.write().await;
         store.insert(key.clone(), value.clone());
-        Ok(Ok(()))
+        Ok(())
     }
 }
 ```
@@ -157,17 +161,17 @@ the artifacts with a developer key, a critical step for security and trust on a 
 
 ## Custom Component
 
-As mentioned before a provider provides functionailties for components. Hence to showcase the usage
+As mentioned before a provider provides functionalities for components. Hence, to showcase the usage
 of these functionalities we will build a minimal custom component that incorporates the before
-implemented functionalities of a `key-value` store. Checkout the `custom-component/` folder and make
-yourself familiar with the structure of it.
+implemented functionalities of a `key-value` store. Check out the `custom-component/` folder and
+make yourself familiar with the structure of it.
 
 ### Wasm Interface Type
 
-As with all `wasmassembly` components we need to define the interface to setup the contract between
-the component and the provider from the component side. Go to `custom-component/wit/component.wit`
-and define the contract to import the `key-value` exposed `store` interface. Additionally in order
-to interact more easily with the component we also want to use the `httpserver` provider.
+As with all WebAssembly components we need to define the interface to setup the contract between the
+component and the provider from the component side. Go to `custom-component/wit/component.wit` and
+define the contract to import the `key-value` exposed `store` interface. Additionally in order to
+interact more easily with the component we also want to use the `httpserver` provider.
 
 <details>
   <summary>Solution</summary>
@@ -185,59 +189,67 @@ world custom-component {
 
 ### Use provider capabilities
 
-Now we need to implement the logic in our `custom-component`. The goal is to listen to http requests
-and react with response that shows the capabilities of our `key-value` provider. Lets implement the
+Now we need to implement the logic in our `custom-component`. The goal is to listen to HTTP requests
+and react with response that shows the capabilities of our `key-value` provider. Let's implement the
 logic to respond to queries that contain query parameters of the form `key=value` to store and `key`
-to retrieve values. (**Note:** Usually we would handle this with different http methods but for
-simpicity reasons we will only use a `GET` method.)
+to retrieve values. (**Note:** Usually we would handle this with different HTTP methods but for
+simplicity reasons we will only use a `GET` method.)
 
 <details>
   <summary>Solution</summary>
 
 ```rust
-        let response_body = match query.split_once('=') {
-            // Case 1: Query contains '=', implying SET operation (e.g., ?key=value)
-            Some((key, value)) => {
-                if let Err(_error) = store::set(&key, &value) {
-                    return Err(ErrorCode::InternalError(Some(format!(
-                        "failed to write key!"
-                    ))));
-                }
-                format!("{key} added with value: {value}!\n")
+let (status, response_body) = match query.split_once('=') {
+    // Case 1: Query contains '=', implying SET operation (e.g., ?key=value)
+    Some((key, value)) => {
+        store::set(&key, &value);
+        (
+            http::StatusCode::CREATED,
+            format!("{key} added with value: {value}!\n"),
+        )
+    }
+    // Case 2: Query does not contain '=', implying GET operation or Welcome message
+    None => {
+        let key = query.trim();
 
-            }
-            // Case 2: Query does not contain '=', implying GET operation or Welcome message
-            None => {
-                let key = query.trim();
-
-                if key.is_empty() {
-                    format!("Use the query string: ?key=value (SET) or ?key (GET).")
-                } else {
-                    match store::get(key) {
-                        // Success: Value found
-                        Ok(Some(value)) => format!("Value for '{key}': {value}"),
-                        // Success: Key not found
-                        Ok(None) => {
-                            status = http::StatusCode::NOT_FOUND;
-                            format!("Key '{key}' not found.")
-                        },
-                        // Failure: Underlying store error
-                        Err(e) => {
-                            return Err(ErrorCode::InternalError(Some(format!("Store get failed: {:?}", e))));
-                        }
-                    }
+        if key.is_empty() {
+            (
+                http::StatusCode::BAD_REQUEST,
+                format!("Use the query string: ?key=value (SET) or ?key (GET)."),
+            )
+        } else {
+            match store::get(key) {
+                // Success: Value found
+                Some(value) => {
+                    (http::StatusCode::OK, format!("Value for '{key}': {value}"))
                 }
+                // Success: Key not found
+                None => (
+                    http::StatusCode::NOT_FOUND,
+                    format!("Key '{key}' not found."),
+                ),
             }
-        };
+        }
+    }
+};
 ```
 
 </details>
 
+## Building the Component
+
+You can then build the component using:
+
+```bash
+wash wit deps
+wash build
+```
+
 ## Deploying with WADM
 
-For deployment, we'll use a `wadm.yaml` (wasmcloud application deployment manifest) file to
-declaratively define, deploy and manage our application. This manifest tells the `wasmCloud` host
-which components and providers to start, and how to link them together. Checkout the manifest and
+For deployment, we'll use a `wadm.yaml` (wasmCloud application deployment manifest) file to
+declaratively define, deploy, and manage our application. This manifest tells the `wasmCloud` host
+which components and providers to start, and how to link them together. Check out the manifest and
 define the link between the custom-component and our custom `key-value` provider.
 
 > 💡 **Hint:** As we are in development mode we can reference to our custom provider by linking to
@@ -264,7 +276,8 @@ spec:
     - name: custom-component
       type: component
       properties:
-        image: file://./build/custom_component.wasm traits:
+        image: file://./build/custom_component.wasm
+      traits:
         - type: spreadscaler
           properties:
             instances: 1
@@ -300,26 +313,29 @@ spec:
 
 </details>
 
-After we ran the following commands we are ready to deploy the comonent with the provider on the
-`wasmtime-host`: Now we build our custom component and once completed successfully deploy our
-`custom-component`.
+After we ran the following commands we are ready to deploy the component with the provider on the
+`wasmtime-host`. We start a `wasmtime-host` and deploy the application:
 
 ```bash
-wash wit deps
-wash build
-```
-
-Finally start `wasmtime-host` and deploy the application:
-
-```bash
-wash up
+wash up -d
 wash app deploy ./wadm.yaml
 ```
 
 Using a `curl` we can test the functionality:
 
 ```bash
-curl localhost:8000?test-key # result in error as key not found
-curl localhost:8000?test-key=test-value # result in stored message
-curl localhost:8000?test-key # return stored value
+curl localhost:8000?test-key # status code 404: result in error as key not found
+curl localhost:8000?test-key=test-value # status code 201: result in stored message
+curl localhost:8000?test-key # status code 200: return stored value
+```
+
+## Teardown
+
+You can then tear down the wasmCloud host using:
+
+```bash
+# first delete the application, otherwise it will remain when restarting wasmcloud
+wash app delete custom-component
+# shutdown wasmcloud
+wash down
 ```

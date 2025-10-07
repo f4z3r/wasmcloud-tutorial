@@ -15,7 +15,7 @@ use crate::config::ProviderConfig;
 use bindings::exports::wasmcloud_tutorial::key_value_provider::store::Handler;
 
 pub(crate) mod bindings {
-    wit_bindgen_wrpc::generate!{}
+    wit_bindgen_wrpc::generate! {}
 }
 
 #[derive(Default, Clone)]
@@ -36,7 +36,6 @@ impl KeyValueStoreProvider {
     fn name() -> &'static str {
         "custom-template-provider"
     }
-
 
     /// Execute the provider, loading [`HostData`] from the host which includes the provider's configuration and
     /// information about the host. Once you use the passed configuration to construct a [`KeyValueStoreProvider`],
@@ -80,21 +79,24 @@ impl KeyValueStoreProvider {
 /// a trait that the provider must implement. This trait is used to handle invocations from components that
 /// link to the provider. The `Handler` trait is generated for each export in the WIT world.
 impl Handler<Option<Context>> for KeyValueStoreProvider {
-    async fn get(&self,_ctx: Option<Context>, key: String) -> Result<Result<Option<String>, String>> {
+    async fn get(
+        &self,
+        _ctx: Option<Context>,
+        key: String,
+    ) -> Result<Option<String>, anyhow::Error> {
         let store = self.store.read().await;
-        let result = store.get(&key).cloned();
-
-        if result.is_some() {
-            Ok(Ok(result))
-        } else {
-            Ok(Err(format!("Key '{}' not found", key)))
-        }
+        Ok(store.get(&key).cloned())
     }
 
-    async fn set(&self,_ctx: Option<Context>, key: String, value: String) -> Result<Result<(), String>> {
+    async fn set(
+        &self,
+        _ctx: Option<Context>,
+        key: String,
+        value: String,
+    ) -> Result<(), anyhow::Error> {
         let mut store = self.store.write().await;
         store.insert(key.clone(), value.clone());
-        Ok(Ok(()))
+        Ok(())
     }
 }
 /// Implementing the [`Provider`] trait is optional. Implementing the methods in the trait allow you to set up
