@@ -1,8 +1,10 @@
 # A Python Component
 
-Building WASM components from Python code is very simple. We create the WIT definition (in this case
-under the [`wit/`](./wit/) directory), and then use `componentize-py` to generate the boilerplate
-code from the WIT definition. This is achieved by running the following command:
+Building WASM components from Python code is very simple. We create the `WIT` definition (in our
+case we already did this under the [`wit/`](./wit/) directory), and then use `componentize-py` to
+generate the boilerplatecode from the WIT definition. The boilerplatecode is needed because it acts
+as a translator for the interface, ensuring the Python interpreter understands the `WIT` interface
+definitions. This is achieved by running the following command:
 
 ```sh
 uv run componentize-py --wit-path wit --world adder bindings .
@@ -22,7 +24,11 @@ class Add(Protocol):
 ```
 
 This is the abtract method we then implement in our `app.py`. As this is Python, implementing an
-interface is done by subtyping an abstract class:
+interface is done by subtyping an abstract class. Now we need to actually implement the logic of our
+component. Head to [./app.py](./app.py) and add the required logic for the add function.
+
+<details>
+    <summary>Solution</summary>
 
 ```py
 class Add(exports.Add):
@@ -30,7 +36,9 @@ class Add(exports.Add):
         return x + y
 ```
 
-With this implemented, we can generate the WASM component:
+</details>
+
+Now our component is complete and we can generate the WASM component:
 
 ```sh
 uv run componentize-py \
@@ -68,3 +76,5 @@ should include the following blocks:
   }
   ```
   The definition of the interface being exported.
+
+Head back to the main tutorial and continue with the next steps to complete your application!
