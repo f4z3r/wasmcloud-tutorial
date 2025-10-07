@@ -215,14 +215,15 @@ let (status, response_body) = match query.split_once('=') {
         if key.is_empty() {
             (
                 http::StatusCode::BAD_REQUEST,
-                format!("Use the query string: ?key=value (SET) or ?key (GET)."),
+                "Use the query string: ?key=value (SET) or ?key (GET).".into(),
             )
         } else {
             match store::get(key) {
                 // Success: Value found
-                Some(value) => {
-                    (http::StatusCode::OK, format!("Value for '{key}': {value}"))
-                }
+                Some(value) => (
+                    http::StatusCode::OK,
+                    format!("Value for '{key}': {value}")
+                ),                }
                 // Success: Key not found
                 None => (
                     http::StatusCode::NOT_FOUND,
@@ -282,6 +283,7 @@ spec:
         - type: spreadscaler
           properties:
             instances: 1
+        # The link below was added.
         - type: link
           properties:
             target:
@@ -306,6 +308,7 @@ spec:
                 - name: default-http
                   properties:
                     address: 0.0.0.0:8000
+    # The capability below was added.
     - name: key-value-provider
       type: capability
       properties:

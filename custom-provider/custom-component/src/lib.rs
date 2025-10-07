@@ -28,10 +28,11 @@ impl http::Server for CustomComponent {
         let (status, response_body) = match query.split_once('=') {
             // Case 1: Query contains '=', implying SET operation (e.g., ?key=value)
             Some((key, value)) => {
-                store::set(&key, &value);
+                // TODO: use the `store::set` method to store the key and value using the provider.
                 (
-                    http::StatusCode::CREATED,
-                    format!("{key} added with value: {value}!\n"),
+                     http::StatusCode::CREATED,
+                    // TODO: and a message that tells the client that the store action was
+                    // successful. You can use the `format!` macro for this.
                 )
             }
             // Case 2: Query does not contain '=', implying GET operation or Welcome message
@@ -40,19 +41,30 @@ impl http::Server for CustomComponent {
 
                 if key.is_empty() {
                     (
-                        http::StatusCode::BAD_REQUEST,
-                        format!("Use the query string: ?key=value (SET) or ?key (GET)."),
+                        // TODO: the key is empty, return a "BAD_REQUEST" error code. See the
+                        // CREATED error code above for reference.
+                        ,
+                        // TODO: return a meaningful error message to tell the user how to use the
+                        // API.
                     )
                 } else {
                     match store::get(key) {
                         // Success: Value found
-                        Some(value) => {
-                            (http::StatusCode::OK, format!("Value for '{key}': {value}"))
-                        }
+                        Some(value) => (
+                            // TODO: the key is empty, return a "OK" error code. See the
+                            // CREATED error code above for reference
+                            ,
+                            // TODO: return a message to the client telling it what value was
+                            // stored for the requested key. You can use the `format!` macro for
+                            // this.
+                        ),
                         // Success: Key not found
                         None => (
-                            http::StatusCode::NOT_FOUND,
-                            format!("Key '{key}' not found."),
+                            // TODO: the key is empty, return a "NOT_FOUND" error code. See the
+                            // CREATED error code above for reference.
+                            ,
+                            // TODO: return a message to the client telling it that no value was
+                            // found for the requested key.
                         ),
                     }
                 }

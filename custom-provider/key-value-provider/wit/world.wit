@@ -4,7 +4,9 @@ interface store {
     // Retrieve a value associated with a key
     get: func(key: string) -> option<string>;
 
-    // Store a value associated with a key
+    // TODO: write a function declaration called "set" which takes two string
+    // arguments: "key" and "value". The function does not need to return anything
+    // as it simply creates an entry in the key-value store.
     set: func(key: string, value: string);
 }
 

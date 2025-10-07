@@ -17,12 +17,13 @@ spec:
           properties:
             instances: 1
         - type: link
+          # TODO: complete the configuration below
           properties:
             target:
-              name: key-value-provider
-            namespace: wasmcloud-tutorial
-            package: key-value-provider
-            interfaces: [store]
+              name: TODO
+            namespace: TODO
+            package: TODO
+            interfaces: [TODO]
     - name: httpserver
       type: capability
       properties:
@@ -41,6 +42,7 @@ spec:
                   properties:
                     address: 0.0.0.0:8000
     - name: key-value-provider
+      # TODO: complete the configuration below
       type: capability
       properties:
-        image: file://../key-value-provider/build/key-value-provider.par.gz
+        image: TODO
