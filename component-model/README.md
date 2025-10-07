@@ -81,7 +81,7 @@ If you ran the two `cargo` commands, you should have a `calculator.wasm` compone
 
 ## Composing
 
-Now before we can run the componets, we need to compose them. This can be done using the `wac`
+Now before we can run the components, we need to compose them. This can be done using the `wac`
 (WebAssembly Composition) tooling:
 
 ```sh

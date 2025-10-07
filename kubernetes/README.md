@@ -19,9 +19,9 @@ k3d cluster create wasmcloud-demo -c assets/k3d-config.yaml
 ```
 
 The cluster we create here is a five node cluster for demonstration purposes. One node is for the
-Kubernetes itself, and of the remaining four worker nodes we will use two for our application
-platform and two for our service provisioning. Once the cluster is up and running, let us label the
-nodes accordingly:
+Controlplane of Kubernetes itself, and of the remaining four worker nodes we will use two for our
+application platform and two for our service provisioning. Once the cluster is up and running, let
+us label the nodes accordingly:
 
 ```bash
 kubectl label node k3d-wasmcloud-demo-agent-0 "node-role.kubernetes.io/worker=true"
@@ -88,6 +88,8 @@ to use a Redis cluster to back our application persistence.
 kubectl create namespace redis
 # use bitnami helm chart to install redis
 helm install -n redis redis oci://registry-1.docker.io/bitnamicharts/redis -f ./assets/redis-values.yaml
+# wait until the redis clusters are ready
+kubectl get pods -n redis
 ```
 
 ### Deploy a Demo Application
@@ -119,18 +121,18 @@ nats -s 127.0.0.1:4222 sub "bookings.events"
 
 Then either run the command below or access the URL in your browser:
 
-```console
-$ curl -X POST http://localhost:8081/bookings/1 -d '{"booking": "This is a sample booking"}'
-Booking 1 created
+```bash
+# create 1 booking
+curl -X POST http://localhost:8081/bookings/1 -d '{"booking": "This is a sample booking"}'
 
-$ curl -X POST http://localhost:8081/bookings/2 -d '{"booking": "This is a another booking"}'
-Booking 2 created
+# create 1 booking
+curl -X POST http://localhost:8081/bookings/2 -d '{"booking": "This is a another booking"}'
 
-$ curl http://localhost:8081/bookings/1
-Booking 1: This is a simple booking
+# get the first booking
+curl http://localhost:8081/bookings/1
 
-$ curl -X DELETE http://localhost:8081/bookings/2
-Deleted booking 2
+# delete the second booking
+curl -X DELETE http://localhost:8081/bookings/2
 ```
 
 And see a message being published on the subject:
