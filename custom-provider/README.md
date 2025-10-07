@@ -24,7 +24,7 @@ commands required by the chosen backend (like a `redis` query or a `postgresql` 
 simplifies backend changes to the point where no component code needs to be modified when a backend
 is swapped.
 
-![component-provider-backend](./assets/providersetup.excalidraw.svg)
+![component-provider-backend](./assets/ProviderSetup.excalidraw.svg)
 
 ## The Provider Configuration
 
