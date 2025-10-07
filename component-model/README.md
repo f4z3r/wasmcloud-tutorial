@@ -9,25 +9,42 @@ Components can be seen as self-describing units of executable code, with clearly
 Through these interfaces, components can be composed with one another the same way a program might
 use a library in regular programming languages.
 
-In the comparison between the JVM and WASM, components can be seen as similar to JARs. They can be
-produced from various languages (just like JARs can be produced by different languages like Java or
-Scala) and have an interface they adhere to. As opposed to JARs, this interface is fully described,
-and of course, the security guarantees from WASM still hold.
+In the comparison between the JVM and WASM, components can be seen as similar to JARs in that they
+serve as self-contained packages. They can be produced from various languages (just like JARs can be
+produced by different languages like Java or Scala) and have an interface they adhere to. As opposed
+to JARs, this interface is fully described, and of course, the security guarantees from WASM still
+hold.
 
 ## Composition
 
-The power of the component model comes from the fact that these components can be composed, just
-like program libraries can be combined into a program.
+The power of the component model lies in the ability to enable safe, efficient and language-agnostic
+composition as plug-and-play building blocks, just like program libraries can be combined into a
+program.
 
 ![Component Model](./assets/component-model.excalidraw.png)
 
-The interfaces over which these components talk is implemented in WASM, but are described the Wasm
-Interface Type (WIT) language. This is a human readable way to define what interface the component
-wants to use (imports) and which interface the component provides (exports).
+The interfaces over which these components talk is implemented in WASM, but are described in the
+Wasm Interface Type (WIT) language. This is a human readable way to define what interface the
+component wants to use (imports) and which interface the component provides (exports).
 
-For instance, in this example we will compose two simple components, one that provides a function to
-add two unsigned integers, while the other uses that functionality to trigger a computation. Check
-out the WIT definition of the former component:
+### Example Overview
+
+In our example we will compose two simple components, one that provides a function to add two
+unsigned integers, while the other uses that functionality to trigger a computation. You can find
+the structure of these components under [py-component](./py-component/) (adder) and
+[rs-component](./rs-component/) (calculator). This tutorial will guide you through the missing parts
+to make this a working showcase of the component-model!
+
+![Example Component Model](./assets/ComponentExample.excalidraw.png)
+
+Check out the [WIT definition](./py-component/wit/component.wit) of the `adder` component and try to
+define the interface that exports an `add` function.
+
+> **💡Note:** Interfaces are collected under `Worlds` that can describe the capabilities of a
+> component.
+
+<details>
+    <summary>Solution</summary>
 
 ```wit
 package wasmcloud-tutorial:adder@0.1.0;
@@ -41,8 +58,17 @@ world adder {
 }
 ```
 
-This defines a versioned package, which contains a single interface definition. The `adder` world
-then exports the `add` interface. On the other side, check out the second component's WIT:
+</details>
+
+With the `WIT` we define a versioned package, which contains a single interface definition. As
+implemented above the `adder` world exports the `add` interface. On the other side, implement the
+[WIT definition](./rs-component/wit/component.wit) of the `calculator` component to import the `add`
+function of the `adder` component.
+
+> **💡Note:** As we do not export any functionality we can omit a version for this package.
+
+<details>
+    <summary>Solution</summary>
 
 ```wit
 package wasmcloud-tutorial:calculator;
@@ -52,36 +78,31 @@ world app {
 }
 ```
 
-This defines an unversioned package (versioning is not as important here as it does not export any
-functionality), which imports the `add` interface from the `wasmcloud-tutorial:adder` package
-described in the former WIT definition.
-
-> Worlds are just collections of interfaces that can describe the capabilities of a component.
+</details>
 
 The beauty of these definitions is that the implementation of these components can now be performed
 in any language which targets WebAssembly. In our case we will implement the `adder` component with
-Python, and the other one in Rust.
+Python, and the `calculator` in Rust.
 
 ## A Python Component
 
-You will find a Python component under [`py-component`](./py-component/). This will implement the
-`add` interface described above. Check out its README on how to build the component.
-
-If you ran the two `componentize-py` commands, you should have a `adder.wasm` component in the
-`py-component` directory.
+As mentioned above the structure of a Python component can be found under
+[`py-component`](./py-component/). For which we earlier implemented the `add` interface. Check out
+its README on how to complete the missing parts and build the component. Once you successfully built
+the component and aquired the `adder.wasm` file come back and continue with the `calculator`
+component below.
 
 ## A Rust Component
 
-You will find a Rust component under [`rs-component`](./rs-component/). This will use the Python
-component and return an executable component that performs an arithmetic operation. Check out its
-README on how to build the component.
-
-If you ran the two `cargo` commands, you should have a `calculator.wasm` component in the
-`rs-component/target/wasm32-wasip1/release/` directory.
+For the `calculator` component you will find the structure of a Rust component under
+[`rs-component`](./rs-component/). This will use the Python component and return an executable
+component that performs an arithmetic operation. Check out its README on how to complete the missing
+parts and build the component. Like before once you built the component and got the
+`calculator.wasm` file come back and learn how to compose the two components together!
 
 ## Composing
 
-Now before we can run the componets, we need to compose them. This can be done using the `wac`
+Now before we can run the components, we need to compose them. This can be done using the `wac`
 (WebAssembly Composition) tooling:
 
 ```sh
