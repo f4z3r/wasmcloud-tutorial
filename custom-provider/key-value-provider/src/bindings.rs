@@ -24,43 +24,21 @@ pub mod exports {
                     let result1 = T::get(_rt::string_lift(bytes0));
                     let ptr2 = (&raw mut _RET_AREA.0).cast::<u8>();
                     match result1 {
-                        Ok(e) => {
-                            *ptr2.add(0).cast::<u8>() = (0i32) as u8;
-                            match e {
-                                Some(e) => {
-                                    *ptr2
-                                        .add(::core::mem::size_of::<*const u8>())
-                                        .cast::<u8>() = (1i32) as u8;
-                                    let vec3 = (e.into_bytes()).into_boxed_slice();
-                                    let ptr3 = vec3.as_ptr().cast::<u8>();
-                                    let len3 = vec3.len();
-                                    ::core::mem::forget(vec3);
-                                    *ptr2
-                                        .add(3 * ::core::mem::size_of::<*const u8>())
-                                        .cast::<usize>() = len3;
-                                    *ptr2
-                                        .add(2 * ::core::mem::size_of::<*const u8>())
-                                        .cast::<*mut u8>() = ptr3.cast_mut();
-                                }
-                                None => {
-                                    *ptr2
-                                        .add(::core::mem::size_of::<*const u8>())
-                                        .cast::<u8>() = (0i32) as u8;
-                                }
-                            };
-                        }
-                        Err(e) => {
+                        Some(e) => {
                             *ptr2.add(0).cast::<u8>() = (1i32) as u8;
-                            let vec4 = (e.into_bytes()).into_boxed_slice();
-                            let ptr4 = vec4.as_ptr().cast::<u8>();
-                            let len4 = vec4.len();
-                            ::core::mem::forget(vec4);
+                            let vec3 = (e.into_bytes()).into_boxed_slice();
+                            let ptr3 = vec3.as_ptr().cast::<u8>();
+                            let len3 = vec3.len();
+                            ::core::mem::forget(vec3);
                             *ptr2
                                 .add(2 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>() = len4;
+                                .cast::<usize>() = len3;
                             *ptr2
                                 .add(::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>() = ptr4.cast_mut();
+                                .cast::<*mut u8>() = ptr3.cast_mut();
+                        }
+                        None => {
+                            *ptr2.add(0).cast::<u8>() = (0i32) as u8;
                         }
                     };
                     ptr2
@@ -68,77 +46,6 @@ pub mod exports {
                 #[doc(hidden)]
                 #[allow(non_snake_case)]
                 pub unsafe fn __post_return_get<T: Guest>(arg0: *mut u8) {
-                    let l0 = i32::from(*arg0.add(0).cast::<u8>());
-                    match l0 {
-                        0 => {
-                            let l1 = i32::from(
-                                *arg0.add(::core::mem::size_of::<*const u8>()).cast::<u8>(),
-                            );
-                            match l1 {
-                                0 => {}
-                                _ => {
-                                    let l2 = *arg0
-                                        .add(2 * ::core::mem::size_of::<*const u8>())
-                                        .cast::<*mut u8>();
-                                    let l3 = *arg0
-                                        .add(3 * ::core::mem::size_of::<*const u8>())
-                                        .cast::<usize>();
-                                    _rt::cabi_dealloc(l2, l3, 1);
-                                }
-                            }
-                        }
-                        _ => {
-                            let l4 = *arg0
-                                .add(::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>();
-                            let l5 = *arg0
-                                .add(2 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>();
-                            _rt::cabi_dealloc(l4, l5, 1);
-                        }
-                    }
-                }
-                #[doc(hidden)]
-                #[allow(non_snake_case)]
-                pub unsafe fn _export_set_cabi<T: Guest>(
-                    arg0: *mut u8,
-                    arg1: usize,
-                    arg2: *mut u8,
-                    arg3: usize,
-                ) -> *mut u8 {
-                    #[cfg(target_arch = "wasm32")] _rt::run_ctors_once();
-                    let len0 = arg1;
-                    let bytes0 = _rt::Vec::from_raw_parts(arg0.cast(), len0, len0);
-                    let len1 = arg3;
-                    let bytes1 = _rt::Vec::from_raw_parts(arg2.cast(), len1, len1);
-                    let result2 = T::set(
-                        _rt::string_lift(bytes0),
-                        _rt::string_lift(bytes1),
-                    );
-                    let ptr3 = (&raw mut _RET_AREA.0).cast::<u8>();
-                    match result2 {
-                        Ok(_) => {
-                            *ptr3.add(0).cast::<u8>() = (0i32) as u8;
-                        }
-                        Err(e) => {
-                            *ptr3.add(0).cast::<u8>() = (1i32) as u8;
-                            let vec4 = (e.into_bytes()).into_boxed_slice();
-                            let ptr4 = vec4.as_ptr().cast::<u8>();
-                            let len4 = vec4.len();
-                            ::core::mem::forget(vec4);
-                            *ptr3
-                                .add(2 * ::core::mem::size_of::<*const u8>())
-                                .cast::<usize>() = len4;
-                            *ptr3
-                                .add(::core::mem::size_of::<*const u8>())
-                                .cast::<*mut u8>() = ptr4.cast_mut();
-                        }
-                    };
-                    ptr3
-                }
-                #[doc(hidden)]
-                #[allow(non_snake_case)]
-                pub unsafe fn __post_return_set<T: Guest>(arg0: *mut u8) {
                     let l0 = i32::from(*arg0.add(0).cast::<u8>());
                     match l0 {
                         0 => {}
@@ -153,14 +60,26 @@ pub mod exports {
                         }
                     }
                 }
+                #[doc(hidden)]
+                #[allow(non_snake_case)]
+                pub unsafe fn _export_set_cabi<T: Guest>(
+                    arg0: *mut u8,
+                    arg1: usize,
+                    arg2: *mut u8,
+                    arg3: usize,
+                ) {
+                    #[cfg(target_arch = "wasm32")] _rt::run_ctors_once();
+                    let len0 = arg1;
+                    let bytes0 = _rt::Vec::from_raw_parts(arg0.cast(), len0, len0);
+                    let len1 = arg3;
+                    let bytes1 = _rt::Vec::from_raw_parts(arg2.cast(), len1, len1);
+                    T::set(_rt::string_lift(bytes0), _rt::string_lift(bytes1));
+                }
                 pub trait Guest {
                     /// Retrieve a value associated with a key
-                    fn get(key: _rt::String) -> Result<Option<_rt::String>, _rt::String>;
+                    fn get(key: _rt::String) -> Option<_rt::String>;
                     /// Store a value associated with a key
-                    fn set(
-                        key: _rt::String,
-                        value: _rt::String,
-                    ) -> Result<(), _rt::String>;
+                    fn set(key: _rt::String, value: _rt::String) -> ();
                 }
                 #[doc(hidden)]
                 macro_rules! __export_wasmcloud_tutorial_key_value_provider_store_0_1_0_cabi {
@@ -176,12 +95,8 @@ pub mod exports {
                         #[unsafe (export_name =
                         "wasmcloud-tutorial:key-value-provider/store@0.1.0#set")] unsafe
                         extern "C" fn export_set(arg0 : * mut u8, arg1 : usize, arg2 : *
-                        mut u8, arg3 : usize,) -> * mut u8 { unsafe {
-                        $($path_to_types)*:: _export_set_cabi::<$ty > (arg0, arg1, arg2,
-                        arg3) } } #[unsafe (export_name =
-                        "cabi_post_wasmcloud-tutorial:key-value-provider/store@0.1.0#set")]
-                        unsafe extern "C" fn _post_return_set(arg0 : * mut u8,) { unsafe
-                        { $($path_to_types)*:: __post_return_set::<$ty > (arg0) } } };
+                        mut u8, arg3 : usize,) { unsafe { $($path_to_types)*::
+                        _export_set_cabi::<$ty > (arg0, arg1, arg2, arg3) } } };
                     };
                 }
                 #[doc(hidden)]
@@ -191,10 +106,10 @@ pub mod exports {
                 struct _RetArea(
                     [::core::mem::MaybeUninit<
                         u8,
-                    >; 4 * ::core::mem::size_of::<*const u8>()],
+                    >; 3 * ::core::mem::size_of::<*const u8>()],
                 );
                 static mut _RET_AREA: _RetArea = _RetArea(
-                    [::core::mem::MaybeUninit::uninit(); 4
+                    [::core::mem::MaybeUninit::uninit(); 3
                         * ::core::mem::size_of::<*const u8>()],
                 );
             }
@@ -264,14 +179,13 @@ pub(crate) use __export_provider_impl as export;
 )]
 #[doc(hidden)]
 #[allow(clippy::octal_escapes)]
-pub static __WIT_BINDGEN_COMPONENT_TYPE: [u8; 304] = *b"\
-\0asm\x0d\0\x01\0\0\x19\x16wit-component-encoding\x04\0\x07\xb1\x01\x01A\x02\x01\
-A\x02\x01B\x07\x01ks\x01j\x01\0\x01s\x01@\x01\x03keys\0\x01\x04\0\x03get\x01\x02\
-\x01j\0\x01s\x01@\x02\x03keys\x05values\0\x03\x04\0\x03set\x01\x04\x04\01wasmclo\
-ud-tutorial:key-value-provider/store@0.1.0\x05\0\x04\04wasmcloud-tutorial:key-va\
-lue-provider/provider@0.1.0\x04\0\x0b\x0e\x01\0\x08provider\x03\0\0\0G\x09produc\
-ers\x01\x0cprocessed-by\x02\x0dwit-component\x070.227.1\x10wit-bindgen-rust\x060\
-.41.0";
+pub static __WIT_BINDGEN_COMPONENT_TYPE: [u8; 293] = *b"\
+\0asm\x0d\0\x01\0\0\x19\x16wit-component-encoding\x04\0\x07\xa6\x01\x01A\x02\x01\
+A\x02\x01B\x05\x01ks\x01@\x01\x03keys\0\0\x04\0\x03get\x01\x01\x01@\x02\x03keys\x05\
+values\x01\0\x04\0\x03set\x01\x02\x04\01wasmcloud-tutorial:key-value-provider/st\
+ore@0.1.0\x05\0\x04\04wasmcloud-tutorial:key-value-provider/provider@0.1.0\x04\0\
+\x0b\x0e\x01\0\x08provider\x03\0\0\0G\x09producers\x01\x0cprocessed-by\x02\x0dwi\
+t-component\x070.227.1\x10wit-bindgen-rust\x060.41.0";
 #[inline(never)]
 #[doc(hidden)]
 pub fn __link_custom_section_describing_imports() {
