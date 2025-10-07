@@ -18,7 +18,9 @@
 
 ## About
 
-TODO: add link to blog posts on wasmcloud architecture
+This repository aims at providing an overview of the most important aspects of wasmCloud using
+easily digestible tutorials. For a bit more background on wasmCloud, check out our recent [blog
+post](https://f4z3r.github.io/beyond-the-pod-webassembly-and-wasmcloud-next-platform-evolution/).
 
 ## WebAssembly
 
