@@ -1,6 +1,8 @@
 package wasmcloud-tutorial:custom-component;
 
 world custom-component {
-  import wasmcloud-tutorial:key-value-provider/store@0.1.0;
+  // TODO: import the version 0.1.0 of the key-value-provider package in the wasmcloud-tutorial
+  // namespace. Specifically, import the store interface of the package. Importing a specific
+  // interface is done with / between the package name and the version.
   export wasi:http/incoming-handler@0.2.2;
 }

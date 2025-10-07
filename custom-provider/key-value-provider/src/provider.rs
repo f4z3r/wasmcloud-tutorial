@@ -27,7 +27,8 @@ pub struct KeyValueStoreProvider {
     /// All components this provider is linked to and their config
     linked_to: Arc<RwLock<HashMap<String, HashMap<String, String>>>>,
     /// Add hashmap to store key value pairs
-    store: Arc<RwLock<HashMap<String, String>>>,
+    // TODO: create a HashMap with keys and values of type String. The name of the field should be
+    // "store".
 }
 
 /// This `impl` block is where you can implement additional methods for your provider. We've provided two examples
@@ -84,8 +85,10 @@ impl Handler<Option<Context>> for KeyValueStoreProvider {
         _ctx: Option<Context>,
         key: String,
     ) -> Result<Option<String>, anyhow::Error> {
-        let store = self.store.read().await;
-        Ok(store.get(&key).cloned())
+        // TODO: implement the function logic. It should get the store out of the RWLock using the
+        // `read` method and await the promise. Then use the `get` method on the HashMap to
+        // retrieve the key and return it wrapped in a Ok. You might need to clone some data to
+        // allow this.
     }
 
     async fn set(
@@ -94,8 +97,10 @@ impl Handler<Option<Context>> for KeyValueStoreProvider {
         key: String,
         value: String,
     ) -> Result<(), anyhow::Error> {
-        let mut store = self.store.write().await;
-        store.insert(key.clone(), value.clone());
+        // TODO: implement the function logic. It should get the store out of the RWLock using the
+        // `write` method (since we plan to write to the HashMap) and await the promise. Then use
+        // the `insert` method on the HashMap to write they key-value pair to it. The return value
+        // is already provided.
         Ok(())
     }
 }
