@@ -4,7 +4,8 @@ metadata:
   name: custom-component
   annotations:
     version: v0.0.1
-    description: "Example component to understand the connection between components, providers and backends."
+    description: |
+      Example component to understand the connection between components, providers and backends.
 spec:
   components:
     - name: custom-component
