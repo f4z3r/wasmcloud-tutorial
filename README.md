@@ -22,6 +22,27 @@ This repository aims at providing an overview of the most important aspects of w
 easily digestible tutorials. For a bit more background on wasmCloud, check out our recent
 [blog post](https://f4z3r.github.io/beyond-the-pod-webassembly-and-wasmcloud-next-platform-evolution/).
 
+### Usage
+
+In order to easily provide the tools that you require for this tutorial, we have provided
+[Devbox](https://www.jetify.com/devbox) files for the various sections. You can
+[install Devbox](https://www.jetify.com/docs/devbox/installing_devbox/) using the following command
+on Linux, Mac, or WSL2 for Windows:
+
+```bash
+curl -fsSL https://get.jetify.com/devbox | bash
+```
+
+Alternatively, you can use a container to run Devbox:
+
+```bash
+# once inside the container, run `cd /app`
+docker run --rm --name devbox -v ./:/app -it jetpackio/devbox sh
+# or using podman, note that you will need to make the current directory world read/writable:
+# chmod -R o+rwx .
+podman run --rm --name devbox -v ./:/app -it docker.io/jetpackio/devbox sh
+```
+
 ## WebAssembly
 
 This repository does not contain an explicit introduction into WebAssembly, but build on top of it.
