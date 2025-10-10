@@ -1,9 +1,10 @@
 package wasmcloud-tutorial:adder@0.1.0;
 
+
 interface add {
-    add: func(x: u32, y: u32) -> u32;
+    // TODO: Add the `add` function to sum two `u32` unsigned integers
 }
 
 world adder {
-    export add;
+    // TODO: export the above defined interface
 }
