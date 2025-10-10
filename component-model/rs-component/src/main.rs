@@ -1,8 +1,7 @@
 mod bindings;
 
-use bindings::wasmcloud_tutorial::adder::add::add;
+// TODO: import the `add` function from the bindings
 
 fn main() {
-    let result = add(1, 5);
-    println!("1 + 5 = {result}");
+    // TODO: implement the logic to add two integers using the imported capability
 }
