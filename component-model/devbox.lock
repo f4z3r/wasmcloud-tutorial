@@ -350,67 +350,83 @@
         }
       }
     },
-    "wasmtime@33.0.0": {
-      "last_modified": "2025-07-28T17:09:23Z",
-      "resolved": "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b#wasmtime",
+    "wasmtime@37.0.2": {
+      "last_modified": "2025-10-12T08:13:11Z",
+      "resolved": "github:NixOS/nixpkgs/832e3b6db48508ae436c2c7bfc0cf914eac6938e#wasmtime",
       "source": "devbox-search",
-      "version": "33.0.0",
+      "version": "37.0.2",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/nhax2wcvqar2554j7cygb7i9wdadyrd3-wasmtime-33.0.0",
+              "path": "/nix/store/127gnjwgm0mnhcq6pfy8h5g2iild53fs-wasmtime-37.0.2",
               "default": true
             },
             {
               "name": "dev",
-              "path": "/nix/store/5q2whwi0gav6ahy6widn1kggp1mjyy1y-wasmtime-33.0.0-dev"
+              "path": "/nix/store/bvf5q4vrs15mpwpd9f78ggjznwlxhmzb-wasmtime-37.0.2-dev"
+            },
+            {
+              "name": "lib",
+              "path": "/nix/store/8kk60c8gyhl41zbzdr4k14aqqs2s7lfb-wasmtime-37.0.2-lib"
             }
           ],
-          "store_path": "/nix/store/nhax2wcvqar2554j7cygb7i9wdadyrd3-wasmtime-33.0.0"
+          "store_path": "/nix/store/127gnjwgm0mnhcq6pfy8h5g2iild53fs-wasmtime-37.0.2"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/nxfd8jkff8hvylrgkrz30qrdj344ji7k-wasmtime-33.0.0",
+              "path": "/nix/store/xmv8lwfslal4n8q0dghkdwwvk3pj3cwy-wasmtime-37.0.2",
               "default": true
             },
             {
               "name": "dev",
-              "path": "/nix/store/3nqy136yqnj803iy9cmdbdw263l6fkia-wasmtime-33.0.0-dev"
+              "path": "/nix/store/vrmlqmij3dwxvjnlmhaa9qpvl30qds7f-wasmtime-37.0.2-dev"
+            },
+            {
+              "name": "lib",
+              "path": "/nix/store/0wkm7fpqcxbx461l25hpj1bd4082s5fn-wasmtime-37.0.2-lib"
             }
           ],
-          "store_path": "/nix/store/nxfd8jkff8hvylrgkrz30qrdj344ji7k-wasmtime-33.0.0"
+          "store_path": "/nix/store/xmv8lwfslal4n8q0dghkdwwvk3pj3cwy-wasmtime-37.0.2"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/yad0s22nr1sk8r63nx63mlkal7vlhm9d-wasmtime-33.0.0",
+              "path": "/nix/store/083higppnkl2wjhynmry87rlfwp7kgqs-wasmtime-37.0.2",
               "default": true
             },
             {
               "name": "dev",
-              "path": "/nix/store/ps6m6s3xv23dphi9c56aiqj92i1na7ip-wasmtime-33.0.0-dev"
+              "path": "/nix/store/1hc63snwhira51pkyaw4cvdqirj41qqg-wasmtime-37.0.2-dev"
+            },
+            {
+              "name": "lib",
+              "path": "/nix/store/0yivs603r2720549px9p45sfcs47qrly-wasmtime-37.0.2-lib"
             }
           ],
-          "store_path": "/nix/store/yad0s22nr1sk8r63nx63mlkal7vlhm9d-wasmtime-33.0.0"
+          "store_path": "/nix/store/083higppnkl2wjhynmry87rlfwp7kgqs-wasmtime-37.0.2"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/gdgwhf2jiwqfv5gya5pwddfwkm09ldbi-wasmtime-33.0.0",
+              "path": "/nix/store/h14c8c9sjd2rbrv8rwpallk8rw4hfizb-wasmtime-37.0.2",
               "default": true
             },
             {
               "name": "dev",
-              "path": "/nix/store/b6by3vm6z7xd5jwh4z6xqkxxm33qznsk-wasmtime-33.0.0-dev"
+              "path": "/nix/store/14hxq90ax4bg9afswym3265mjr19nxf4-wasmtime-37.0.2-dev"
+            },
+            {
+              "name": "lib",
+              "path": "/nix/store/ynzq1dbjhkigzzqii7hknd698d6r6gcm-wasmtime-37.0.2-lib"
             }
           ],
-          "store_path": "/nix/store/gdgwhf2jiwqfv5gya5pwddfwkm09ldbi-wasmtime-33.0.0"
+          "store_path": "/nix/store/h14c8c9sjd2rbrv8rwpallk8rw4hfizb-wasmtime-37.0.2"
         }
       }
     }
