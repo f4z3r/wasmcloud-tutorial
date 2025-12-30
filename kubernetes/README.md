@@ -3,6 +3,11 @@
 > This directory provides a DevBox environment. Run `devbox shell` to have all the tools required to
 > execute the commands listed here and in subdirectories.
 
+> **NOTE:** `wash` and the integration with Kubernetes is undergoing major changes. A new version 2
+> is currently in the making and will massively simplify the deployment of WebAssembly payloads on
+> Kubernetes. Its internal model will be much more closely related to how Kubernetes handles
+> `Deployment`s.
+
 This showcases how to combine Kubernetes and wasmCloud to build a platform with high compute density
 and easy combination of applications, while providing the full flexibility of Kubernetes to deploy
 backing services, and to manage wasmCloud itself of course.
