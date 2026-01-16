@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Fetch Rust build cache
-        uses: actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb # v5
+        uses: actions/cache/restore@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5
         with:
           path: |
             kubernetes/components/booking-master/target/
@@ -47,7 +47,7 @@ jobs:
         working-directory: kubernetes/components/booking-master
         run: devbox run build
       - name: Save Rust build cache
-        uses: actions/cache/save@9255dc7a253b0ccc959486e2bca901246202afeb # v5
+        uses: actions/cache/save@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5
         with:
           path: |
             kubernetes/components/booking-master/target/
