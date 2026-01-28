@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
   "packages": [
-    "kubernetes-helm@3.19.0",
-    "kubectl@1.33.4",
+    "kubernetes-helm@3.19.1",
+    "kubectl@1.35.0",
     "wash-cli@0.39.0",
     "k3d@5.8.3",
-    "natscli@0.2.2"
+    "natscli@0.3.0"
   ],
   "shell": {
     "init_hook": [],
