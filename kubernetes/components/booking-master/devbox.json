@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
   "packages": [
     "rustup@1.28.2",
-    "cargo@1.89.0",
+    "cargo@1.91.1",
     "cargo-component@0.21.1",
-    "wasm-tools@1.239.0",
+    "wasm-tools@1.244.0",
     "wash-cli@0.39.0",
-    "wkg@0.12.0"
+    "wkg@0.13.0"
   ],
   "shell": {
     "init_hook": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.15.1/.schema/devbox.schema.json",
-  "packages": ["natscli@0.2.2", "rustup@1.28.2", "cargo@1.89.0"],
+  "packages": ["natscli@0.3.0", "rustup@1.28.2", "cargo@1.91.1"],
   "shell": {
     "init_hook": ["rustup default stable"],
     "scripts": {}
