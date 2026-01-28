@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.15.1/.schema/devbox.schema.json",
   "packages": [
     "python@3.14",
-    "uv@0.8.14",
+    "uv@0.9.26",
     "rustup@1.28.2",
-    "cargo@1.89.0",
+    "cargo@1.91.1",
     "wasmtime@39.0.1",
     "cargo-component@0.21.1",
-    "wasm-tools@1.239.0",
+    "wasm-tools@1.244.0",
     "wac-cli@latest"
   ],
   "shell": {
