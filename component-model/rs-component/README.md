@@ -1,7 +1,7 @@
 # A Rust Component
 
-Cargo (the Rust build tooling) provides a nice convenient subcommand `component` to setup
-components. This directory was generated using the following command (you don't need to run this):
+There's a nice convenient project [cargo-component](https://github.com/bytecodealliance/cargo-component)
+that adds a new subcommand `component` to Cargo (the Rust build tooling). This directory was generated using the following command (you don't need to run this):
 
 ```sh
 cargo component new rs-component --name calculator
