@@ -350,83 +350,83 @@
         }
       }
     },
-    "wasmtime@39.0.1": {
-      "last_modified": "2025-12-02T02:29:13Z",
-      "resolved": "github:NixOS/nixpkgs/f720de59066162ee879adcc8c79e15c51fe6bfb4#wasmtime",
+    "wasmtime@43.0.1": {
+      "last_modified": "2026-04-23T13:07:47Z",
+      "resolved": "github:NixOS/nixpkgs/01fbdeef22b76df85ea168fbfe1bfd9e63681b30#wasmtime",
       "source": "devbox-search",
-      "version": "39.0.1",
+      "version": "43.0.1",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/cn8qcqksr1556m5430xaq3yv8gibgcj9-wasmtime-39.0.1",
+              "path": "/nix/store/42f3rqs5jr3gh7yv815r2gf1mrngclxx-wasmtime-43.0.1",
               "default": true
             },
             {
-              "name": "dev",
-              "path": "/nix/store/kzpc534pspzdpf0hc7kbc2zh7wz8s09f-wasmtime-39.0.1-dev"
+              "name": "lib",
+              "path": "/nix/store/bzdwb1vq34g12kw6a720kbdfmm95m5w0-wasmtime-43.0.1-lib"
             },
             {
-              "name": "lib",
-              "path": "/nix/store/60dp63nd14910rnx8yipgn3987b5ik1l-wasmtime-39.0.1-lib"
+              "name": "dev",
+              "path": "/nix/store/lq00bn3yzyjmxwf99wrk80ifddffsvnd-wasmtime-43.0.1-dev"
             }
           ],
-          "store_path": "/nix/store/cn8qcqksr1556m5430xaq3yv8gibgcj9-wasmtime-39.0.1"
+          "store_path": "/nix/store/42f3rqs5jr3gh7yv815r2gf1mrngclxx-wasmtime-43.0.1"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/6g4cyd3wh7d4s03qfrxz2r98n8vwmczk-wasmtime-39.0.1",
+              "path": "/nix/store/3w6vhb8rlk66gq9vjh352iz6x5hbmh1y-wasmtime-43.0.1",
               "default": true
             },
             {
               "name": "dev",
-              "path": "/nix/store/jgcx1gw16dcl17nbhir442l9lq3m6cm1-wasmtime-39.0.1-dev"
+              "path": "/nix/store/zag1i9wf0z5g3j142jlbdsxgpcmic6r9-wasmtime-43.0.1-dev"
             },
             {
               "name": "lib",
-              "path": "/nix/store/k87zyvg64wffqayw4jzpzsb8wbh90pcc-wasmtime-39.0.1-lib"
+              "path": "/nix/store/qq6r2yw9fmn94syg3h9abdiq0s6s07lq-wasmtime-43.0.1-lib"
             }
           ],
-          "store_path": "/nix/store/6g4cyd3wh7d4s03qfrxz2r98n8vwmczk-wasmtime-39.0.1"
+          "store_path": "/nix/store/3w6vhb8rlk66gq9vjh352iz6x5hbmh1y-wasmtime-43.0.1"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/zqhf6v74hhy5c0jgx42ry7qfnykf74vc-wasmtime-39.0.1",
+              "path": "/nix/store/frp53jiqkm5n0cj0dhqs9vqkkwl3pi0y-wasmtime-43.0.1",
               "default": true
             },
             {
               "name": "dev",
-              "path": "/nix/store/akwddybn2c53zv4z3kk4jry5kx1mnz5n-wasmtime-39.0.1-dev"
+              "path": "/nix/store/9qw901ik9f1hksqy2hsy6yac1wlznv16-wasmtime-43.0.1-dev"
             },
             {
               "name": "lib",
-              "path": "/nix/store/zgnszl6zcgz28hpal728dskvnvd6scpc-wasmtime-39.0.1-lib"
+              "path": "/nix/store/sw6m0603x8az2naqsdkwb2p0daajv8x5-wasmtime-43.0.1-lib"
             }
           ],
-          "store_path": "/nix/store/zqhf6v74hhy5c0jgx42ry7qfnykf74vc-wasmtime-39.0.1"
+          "store_path": "/nix/store/frp53jiqkm5n0cj0dhqs9vqkkwl3pi0y-wasmtime-43.0.1"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/4jcq2qrgq6h73zgfsgg6zpqs6dfbgy2f-wasmtime-39.0.1",
+              "path": "/nix/store/py21p3bjgzjds9kw43v3rfisz8cg84c4-wasmtime-43.0.1",
               "default": true
             },
             {
               "name": "dev",
-              "path": "/nix/store/zlqnp4shidm2h5ywbj2a8lvmg7m5ygx1-wasmtime-39.0.1-dev"
+              "path": "/nix/store/50svm3jc7f4h4q34kfq92h56rmlgnhkg-wasmtime-43.0.1-dev"
             },
             {
               "name": "lib",
-              "path": "/nix/store/ag980akl3wwm6gaq5pzqkh1pxhm6740h-wasmtime-39.0.1-lib"
+              "path": "/nix/store/fq06jr6hqg42frdq7l25mxpxrr7vxpmj-wasmtime-43.0.1-lib"
             }
           ],
-          "store_path": "/nix/store/4jcq2qrgq6h73zgfsgg6zpqs6dfbgy2f-wasmtime-39.0.1"
+          "store_path": "/nix/store/py21p3bjgzjds9kw43v3rfisz8cg84c4-wasmtime-43.0.1"
         }
       }
     }
