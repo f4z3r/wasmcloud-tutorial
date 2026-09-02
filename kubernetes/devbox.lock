@@ -2,12 +2,12 @@
   "lockfile_version": "1",
   "packages": {
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
-      "last_modified": "2025-08-21T00:30:53Z",
-      "resolved": "github:NixOS/nixpkgs/596312aae91421d6923f18cecce934a7d3bfd6b8?lastModified=1755736253&narHash=sha256-jlIQRypNhB1PcB1BE%2BexpE4xZeJxzoAGr1iUbHQta8s%3D"
+      "last_modified": "2026-08-29T00:50:12Z",
+      "resolved": "github:NixOS/nixpkgs/e8be7818e19ada32105a8af937a6a473b38167ca?lastModified=1787964612&narHash=sha256-0N9nghg3nwzX6b6qc77EzjR9cu%2FZ%2BUR66FlfsCqiURs%3D"
     },
     "k3d@5.8.3": {
-      "last_modified": "2025-07-28T17:09:23Z",
-      "resolved": "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b#k3d",
+      "last_modified": "2026-05-21T08:15:18Z",
+      "resolved": "github:NixOS/nixpkgs/4a29d733e8a7d5b824c3d8c958a946a9867b3eb2#k3d",
       "source": "devbox-search",
       "version": "5.8.3",
       "systems": {
@@ -15,41 +15,41 @@
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/kch2dj9qsrfamxazq8i14wl38ygwhkhk-k3d-5.8.3",
+              "path": "/nix/store/f7q2bxnjhqwvz3mdhqnk6d2hlsk0xlsh-k3d-5.8.3",
               "default": true
             }
           ],
-          "store_path": "/nix/store/kch2dj9qsrfamxazq8i14wl38ygwhkhk-k3d-5.8.3"
+          "store_path": "/nix/store/f7q2bxnjhqwvz3mdhqnk6d2hlsk0xlsh-k3d-5.8.3"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/zk0k2j55x88asnvb7m68dsw67hmcgir2-k3d-5.8.3",
+              "path": "/nix/store/zd1iq1p2qf3y0fmsy3fnn8qrgx17rn1s-k3d-5.8.3",
               "default": true
             }
           ],
-          "store_path": "/nix/store/zk0k2j55x88asnvb7m68dsw67hmcgir2-k3d-5.8.3"
+          "store_path": "/nix/store/zd1iq1p2qf3y0fmsy3fnn8qrgx17rn1s-k3d-5.8.3"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/ama831lzxzr46j47wmijip2zvxrf8sgz-k3d-5.8.3",
+              "path": "/nix/store/hg0n264g239f1qm3jdmdkm6hxq6yivmj-k3d-5.8.3",
               "default": true
             }
           ],
-          "store_path": "/nix/store/ama831lzxzr46j47wmijip2zvxrf8sgz-k3d-5.8.3"
+          "store_path": "/nix/store/hg0n264g239f1qm3jdmdkm6hxq6yivmj-k3d-5.8.3"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/5wcjhb072wmnv7zyr162x65j102zgckv-k3d-5.8.3",
+              "path": "/nix/store/b37c3gql7lv6j5w2palnk164qiwqhyy1-k3d-5.8.3",
               "default": true
             }
           ],
-          "store_path": "/nix/store/5wcjhb072wmnv7zyr162x65j102zgckv-k3d-5.8.3"
+          "store_path": "/nix/store/b37c3gql7lv6j5w2palnk164qiwqhyy1-k3d-5.8.3"
         }
       }
     },
@@ -138,8 +138,8 @@
       }
     },
     "kubernetes-helm@3.19.0": {
-      "last_modified": "2025-09-18T16:33:27Z",
-      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#kubernetes-helm",
+      "last_modified": "2025-10-22T20:59:19Z",
+      "resolved": "github:NixOS/nixpkgs/01b6809f7f9d1183a2b3e081f0a1e6f8f415cb09#kubernetes-helm",
       "source": "devbox-search",
       "version": "3.19.0",
       "systems": {
@@ -147,47 +147,47 @@
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/8irl5599sb6a89qqa9y3mb8j4d2h2vm2-kubernetes-helm-3.19.0",
+              "path": "/nix/store/bacpi311s0g9s86lfx2jd1p2wf3ddp9z-kubernetes-helm-3.19.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/8irl5599sb6a89qqa9y3mb8j4d2h2vm2-kubernetes-helm-3.19.0"
+          "store_path": "/nix/store/bacpi311s0g9s86lfx2jd1p2wf3ddp9z-kubernetes-helm-3.19.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/xqrwcjbk1mkp72y9gdqk0h770s7jfqwy-kubernetes-helm-3.19.0",
+              "path": "/nix/store/nla16isv3jp1lp7m12hf80g1wsc2vqdb-kubernetes-helm-3.19.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/xqrwcjbk1mkp72y9gdqk0h770s7jfqwy-kubernetes-helm-3.19.0"
+          "store_path": "/nix/store/nla16isv3jp1lp7m12hf80g1wsc2vqdb-kubernetes-helm-3.19.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/5k9n5ifg8j39wqgidmihxcw3jn03hr6x-kubernetes-helm-3.19.0",
+              "path": "/nix/store/5crm4xm7pji6zh01gy1a6wk2r76mcn8d-kubernetes-helm-3.19.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/5k9n5ifg8j39wqgidmihxcw3jn03hr6x-kubernetes-helm-3.19.0"
+          "store_path": "/nix/store/5crm4xm7pji6zh01gy1a6wk2r76mcn8d-kubernetes-helm-3.19.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/xhdxsw1rkwpj4j1c020r9bii97n9d624-kubernetes-helm-3.19.0",
+              "path": "/nix/store/q0cxby7givhaah1xkr6v76xn9q99jy85-kubernetes-helm-3.19.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/xhdxsw1rkwpj4j1c020r9bii97n9d624-kubernetes-helm-3.19.0"
+          "store_path": "/nix/store/q0cxby7givhaah1xkr6v76xn9q99jy85-kubernetes-helm-3.19.0"
         }
       }
     },
     "natscli@0.2.2": {
-      "last_modified": "2025-09-18T16:33:27Z",
-      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#natscli",
+      "last_modified": "2025-10-07T08:41:47Z",
+      "resolved": "github:NixOS/nixpkgs/bce5fe2bb998488d8e7e7856315f90496723793c#natscli",
       "source": "devbox-search",
       "version": "0.2.2",
       "systems": {
@@ -195,47 +195,47 @@
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/ix8d71slpphi6a3f0vlvs62h6mnwm7im-natscli-0.2.2",
+              "path": "/nix/store/x1xkll460zvx25mb7fm869hyymhqzq9d-natscli-0.2.2",
               "default": true
             }
           ],
-          "store_path": "/nix/store/ix8d71slpphi6a3f0vlvs62h6mnwm7im-natscli-0.2.2"
+          "store_path": "/nix/store/x1xkll460zvx25mb7fm869hyymhqzq9d-natscli-0.2.2"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/7bmw15a7dz0bhxc3nv85kf78j1h81yd5-natscli-0.2.2",
+              "path": "/nix/store/3zqvncan773z2kkw1h4nds6fxl8kc8nv-natscli-0.2.2",
               "default": true
             }
           ],
-          "store_path": "/nix/store/7bmw15a7dz0bhxc3nv85kf78j1h81yd5-natscli-0.2.2"
+          "store_path": "/nix/store/3zqvncan773z2kkw1h4nds6fxl8kc8nv-natscli-0.2.2"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/28xzh8l6lfd6g7a8jz53zyw2yk4jjbb9-natscli-0.2.2",
+              "path": "/nix/store/m0v30l2wby8faizav0qzdfamyacq134g-natscli-0.2.2",
               "default": true
             }
           ],
-          "store_path": "/nix/store/28xzh8l6lfd6g7a8jz53zyw2yk4jjbb9-natscli-0.2.2"
+          "store_path": "/nix/store/m0v30l2wby8faizav0qzdfamyacq134g-natscli-0.2.2"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/l0rpdq7kpsinfvlkpkqhr4sgz5iinqsx-natscli-0.2.2",
+              "path": "/nix/store/69nz8w0b0k1f1s9n8f9km3l413nzk5nf-natscli-0.2.2",
               "default": true
             }
           ],
-          "store_path": "/nix/store/l0rpdq7kpsinfvlkpkqhr4sgz5iinqsx-natscli-0.2.2"
+          "store_path": "/nix/store/69nz8w0b0k1f1s9n8f9km3l413nzk5nf-natscli-0.2.2"
         }
       }
     },
     "wash-cli@0.39.0": {
-      "last_modified": "2025-07-28T17:09:23Z",
-      "resolved": "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b#wash-cli",
+      "last_modified": "2025-10-22T20:59:19Z",
+      "resolved": "github:NixOS/nixpkgs/01b6809f7f9d1183a2b3e081f0a1e6f8f415cb09#wash-cli",
       "source": "devbox-search",
       "version": "0.39.0",
       "systems": {
@@ -243,41 +243,41 @@
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/3dw9s8j96qmk9242nv4sw5lr8b9h2d1n-wash-cli-0.39.0",
+              "path": "/nix/store/jnrqc601pxscfvb9klk232qxp667smds-wash-cli-0.39.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/3dw9s8j96qmk9242nv4sw5lr8b9h2d1n-wash-cli-0.39.0"
+          "store_path": "/nix/store/jnrqc601pxscfvb9klk232qxp667smds-wash-cli-0.39.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/hcaw9yvxqysj97lp15fqlwkxjmbnhg18-wash-cli-0.39.0",
+              "path": "/nix/store/0rp2y1q860zkg49zqm8spddkm4hss9s1-wash-cli-0.39.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/hcaw9yvxqysj97lp15fqlwkxjmbnhg18-wash-cli-0.39.0"
+          "store_path": "/nix/store/0rp2y1q860zkg49zqm8spddkm4hss9s1-wash-cli-0.39.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/l18hizk9rb9ygp8hjphwcpklsmgq0zp2-wash-cli-0.39.0",
+              "path": "/nix/store/8xx183m7n98sj4yxrsfz64p2yaij8r3a-wash-cli-0.39.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/l18hizk9rb9ygp8hjphwcpklsmgq0zp2-wash-cli-0.39.0"
+          "store_path": "/nix/store/8xx183m7n98sj4yxrsfz64p2yaij8r3a-wash-cli-0.39.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/5yaspvga295vcdrcyvl04aldf5m46v56-wash-cli-0.39.0",
+              "path": "/nix/store/9b1a1zai0l6zqw0g9fl3hv828ql5qdmp-wash-cli-0.39.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/5yaspvga295vcdrcyvl04aldf5m46v56-wash-cli-0.39.0"
+          "store_path": "/nix/store/9b1a1zai0l6zqw0g9fl3hv828ql5qdmp-wash-cli-0.39.0"
         }
       }
     }
