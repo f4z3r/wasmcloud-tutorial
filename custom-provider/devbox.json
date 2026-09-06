@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.0/.schema/devbox.schema.json",
   "packages": [
-    "rustup@1.28.2",
+    "rustup@1.29.0",
     "wash-cli@0.39.0",
   ],
   "shell": {

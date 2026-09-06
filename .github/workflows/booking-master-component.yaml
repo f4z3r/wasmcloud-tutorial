@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Fetch Rust build cache
         uses: actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb # v5
         with:
@@ -38,7 +38,7 @@ jobs:
             kubernetes/components/booking-master/target/
           key: cargo-${{ hashFiles('kubernetes/components/booking-master/Cargo.lock') }}
       - name: Install devbox
-        uses: jetify-com/devbox-install-action@a0d2d53632934ae004f878c840055956d9f741b0 # v0.14.0
+        uses: jetify-com/devbox-install-action@8c6a66ed6273138b1915457069de78cb52fe3bd7 # v0.15.0
         with:
           project-path: ./kubernetes/components/booking-master
           enable-cache: "true"
@@ -83,7 +83,7 @@ jobs:
         with:
           path: kubernetes/components/booking-master/artifacts
       - name: Install wash
-        uses: taiki-e/install-action@00a367b59ffa7299659baf1168279aefe69f5516 # v2.62.10
+        uses: taiki-e/install-action@84f5ac3124727fb3d284d4d22ee9ab3654fd09a6 # v2.87.7
         with:
           tool: ${{ format('wash@{0},wasm-tools@{1}', env.WASH_VERSION, env.WASM_TOOLS_VERSION) }}
       - name: Push version-tagged WebAssembly binary to GHCR
