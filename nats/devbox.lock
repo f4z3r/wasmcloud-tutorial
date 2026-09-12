@@ -1,51 +1,41 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "cargo@1.89.0": {
-      "last_modified": "2025-09-18T16:33:27Z",
-      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#cargo",
+    "cargo@1.97.1": {
+      "last_modified": "2026-08-27T07:16:00Z",
+      "resolved": "github:NixOS/nixpkgs/c27cdad491a991b11ed731760aa2ef8db0cb0410#cargo",
       "source": "devbox-search",
-      "version": "1.89.0",
+      "version": "1.97.1",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/gzv6psv17kv7x9s01w8jhi0h2cg6z15p-cargo-1.89.0",
+              "path": "/nix/store/cvd2pzmgq4pr7kkzx2zmya47fqd70sqa-cargo-1.97.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/gzv6psv17kv7x9s01w8jhi0h2cg6z15p-cargo-1.89.0"
+          "store_path": "/nix/store/cvd2pzmgq4pr7kkzx2zmya47fqd70sqa-cargo-1.97.1"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/ahyjafkgyn6zji9qlvv92z8gxmcmaky4-cargo-1.89.0",
+              "path": "/nix/store/z64fp7fjfy9zr3xn7prdidi4gww213d5-cargo-1.97.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/ahyjafkgyn6zji9qlvv92z8gxmcmaky4-cargo-1.89.0"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/2a5rg88c4kc4mzjbbyah89c2hhyzjjp6-cargo-1.89.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/2a5rg88c4kc4mzjbbyah89c2hhyzjjp6-cargo-1.89.0"
+          "store_path": "/nix/store/z64fp7fjfy9zr3xn7prdidi4gww213d5-cargo-1.97.1"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/xq6ns6hdgl7fdshisp5mb65f1jlysm0h-cargo-1.89.0",
+              "path": "/nix/store/dv55qwamlq68hdiprg1v104ymwh1c27r-cargo-1.97.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/xq6ns6hdgl7fdshisp5mb65f1jlysm0h-cargo-1.89.0"
+          "store_path": "/nix/store/dv55qwamlq68hdiprg1v104ymwh1c27r-cargo-1.97.1"
         }
       }
     },
@@ -53,100 +43,100 @@
       "last_modified": "2025-08-21T00:30:53Z",
       "resolved": "github:NixOS/nixpkgs/596312aae91421d6923f18cecce934a7d3bfd6b8?lastModified=1755736253&narHash=sha256-jlIQRypNhB1PcB1BE%2BexpE4xZeJxzoAGr1iUbHQta8s%3D"
     },
-    "natscli@0.2.2": {
-      "last_modified": "2025-07-28T17:09:23Z",
-      "resolved": "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b#natscli",
+    "natscli@0.4.0": {
+      "last_modified": "2026-08-27T07:16:00Z",
+      "resolved": "github:NixOS/nixpkgs/c27cdad491a991b11ed731760aa2ef8db0cb0410#natscli",
       "source": "devbox-search",
-      "version": "0.2.2",
+      "version": "0.4.0",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/3vs0g4d7jb2xfsms1r3mpkaicgn0cpnv-natscli-0.2.2",
+              "path": "/nix/store/hhc4613hzrlhrwa9410dsyb5l3ncmkyk-natscli-0.4.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/3vs0g4d7jb2xfsms1r3mpkaicgn0cpnv-natscli-0.2.2"
+          "store_path": "/nix/store/hhc4613hzrlhrwa9410dsyb5l3ncmkyk-natscli-0.4.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/ymb3jyvbs19dwgra67sxm5dri9vxm6a6-natscli-0.2.2",
+              "path": "/nix/store/5dbp1g52kf2ppinb23gbzkggf1m2n4nc-natscli-0.4.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/ymb3jyvbs19dwgra67sxm5dri9vxm6a6-natscli-0.2.2"
+          "store_path": "/nix/store/5dbp1g52kf2ppinb23gbzkggf1m2n4nc-natscli-0.4.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/ibm2s2y8ss6gyr12y3bbrb93hsmi479c-natscli-0.2.2",
+              "path": "/nix/store/3pbdgwca8bpsqgzcf90fscnzqdpg5sm3-natscli-0.4.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/ibm2s2y8ss6gyr12y3bbrb93hsmi479c-natscli-0.2.2"
+          "store_path": "/nix/store/3pbdgwca8bpsqgzcf90fscnzqdpg5sm3-natscli-0.4.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/j2ii7y5wihj14sk3f73357j40xqiqx0p-natscli-0.2.2",
+              "path": "/nix/store/79zm98p7fkl1lfyi5hq0gb52sfiqh31l-natscli-0.4.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/j2ii7y5wihj14sk3f73357j40xqiqx0p-natscli-0.2.2"
+          "store_path": "/nix/store/79zm98p7fkl1lfyi5hq0gb52sfiqh31l-natscli-0.4.0"
         }
       }
     },
-    "rustup@1.28.2": {
-      "last_modified": "2025-07-28T17:09:23Z",
+    "rustup@1.29.0": {
+      "last_modified": "2026-08-27T07:16:00Z",
       "plugin_version": "0.0.1",
-      "resolved": "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b#rustup",
+      "resolved": "github:NixOS/nixpkgs/c27cdad491a991b11ed731760aa2ef8db0cb0410#rustup",
       "source": "devbox-search",
-      "version": "1.28.2",
+      "version": "1.29.0",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/fhz4c3pawxqklssimadm9gp5jfagfl8v-rustup-1.28.2",
+              "path": "/nix/store/1x8jzaxfv0bak76xkr5li258cal51n99-rustup-1.29.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/fhz4c3pawxqklssimadm9gp5jfagfl8v-rustup-1.28.2"
+          "store_path": "/nix/store/1x8jzaxfv0bak76xkr5li258cal51n99-rustup-1.29.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/0z156naqlk96m681ns9jji0pw4vwqxq9-rustup-1.28.2",
+              "path": "/nix/store/iwq43bwclkay14x5x5bfj955ffphaqff-rustup-1.29.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/0z156naqlk96m681ns9jji0pw4vwqxq9-rustup-1.28.2"
+          "store_path": "/nix/store/iwq43bwclkay14x5x5bfj955ffphaqff-rustup-1.29.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/2zgwgadb3q97mcia0w2z643y17ifpjkz-rustup-1.28.2",
+              "path": "/nix/store/lvm2155pfw1b3a9g8cij5g7vx2dk4v9f-rustup-1.29.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/2zgwgadb3q97mcia0w2z643y17ifpjkz-rustup-1.28.2"
+          "store_path": "/nix/store/lvm2155pfw1b3a9g8cij5g7vx2dk4v9f-rustup-1.29.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/4z7n3dky3wmx7130rid6c67ra1ipqhn1-rustup-1.28.2",
+              "path": "/nix/store/cdgc1rh9s22n5i5cgr96vda0pjx1xg3x-rustup-1.29.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/4z7n3dky3wmx7130rid6c67ra1ipqhn1-rustup-1.28.2"
+          "store_path": "/nix/store/cdgc1rh9s22n5i5cgr96vda0pjx1xg3x-rustup-1.29.0"
         }
       }
     }
