@@ -1,19 +1,6 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.14"
-
-[[package]]
-name = "componentize-py"
-version = "0.17.2"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/eb/45/ba5b7abdbd966e465f02c25b3b07c5dcf776bfd837ea00b5f7db73a81b21/componentize_py-0.17.2.tar.gz", hash = "sha256:f3149d93388b8c4cd6807a0a5c8ecce83d647ee21a92b35043111df6746e76e8", size = 161880, upload-time = "2025-06-23T19:10:46.827Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ab/ea/7f26864d889d4050562ba77315f4ee7e4905775143b033c23c3b5d4d8430/componentize_py-0.17.2-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:098841d6729ce9773733131f359fd996a8fa5b98bd70c279d7e303cf33ed9c0c", size = 19405390, upload-time = "2025-06-23T19:10:22.167Z" },
-    { url = "https://files.pythonhosted.org/packages/ae/5e/523dcca0e2dfd70f22b3c2b0076fa3f6296fa027f1ea452224a258b57595/componentize_py-0.17.2-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:c2280294f552440969cc0aca701f1b9f69f702dab74b7bc58a0c9b08f18ed52f", size = 18951546, upload-time = "2025-06-23T19:10:28.035Z" },
-    { url = "https://files.pythonhosted.org/packages/eb/46/5a6a6e2296d2a5ee7f5624b4998d158ff1e2956ef75beb2412536f6b3981/componentize_py-0.17.2-cp39-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:4b4a3e0c14fe9532feaf54c208e3be94619a8ffae102725542b8da979e598629", size = 19708707, upload-time = "2025-06-23T19:10:33.629Z" },
-    { url = "https://files.pythonhosted.org/packages/53/ba/f9b8e9aa55538ae6d5fe115edc1e5182ac727d35030008f003514af57a04/componentize_py-0.17.2-cp39-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:0105d497661a1a5bc985ae817cc251f5234556a83ac5712ab36b5f45a0a344be", size = 20281943, upload-time = "2025-06-23T19:10:39.767Z" },
-    { url = "https://files.pythonhosted.org/packages/84/48/5eb6802251e6998aec26988aa6b3ed6301526f8e289f9ade65932f424aef/componentize_py-0.17.2-cp39-abi3-win_amd64.whl", hash = "sha256:fc274995921254f039b65c23891ab161f92da5e0528e47586ced57ea07e97959", size = 18262968, upload-time = "2025-06-23T19:10:45.125Z" },
-]
 
 [[package]]
 name = "adder"
@@ -25,3 +12,16 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [{ name = "componentize-py", specifier = ">=0.17.2" }]
+
+[[package]]
+name = "componentize-py"
+version = "0.25.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/77/3d/c769bac866429f36a6d52451fb2980d5e8784efb1d265fb85eaaceb3c285/componentize_py-0.25.1.tar.gz", hash = "sha256:e4087e916b06171303f803c8ffdd5f177e2422e87d9bed6ffe55cc41b2248aa8", size = 192179, upload-time = "2026-09-12T00:46:39.345Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a1/fc/ea8ac30a3de452626e32c051a38f548e9f7863cd10c35705396e257ac029/componentize_py-0.25.1-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:65fbc4a94df1de8acf7da50a1f5ed1711230188844e53e6332d99029be4e0afa", size = 16115332, upload-time = "2026-09-12T00:46:05.55Z" },
+    { url = "https://files.pythonhosted.org/packages/4b/9c/f444240899a9b43c60b808d0ece5dff8f3dc6831aa119a1d8eb28d952bad/componentize_py-0.25.1-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:a556991534cc496207a9d2ca733c4b0f17ed38ef56a8d6b5f1847fdf1225dd1b", size = 15379697, upload-time = "2026-09-12T00:46:15.278Z" },
+    { url = "https://files.pythonhosted.org/packages/56/66/24a9671f1d9c608e53a8d5ae4873d1fc480f0603488a2f46132e70cc6839/componentize_py-0.25.1-cp39-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:7b6a87c520358166843af0daa86d2312d7af4cbcbbf1e598951085cf7f2991ca", size = 17143402, upload-time = "2026-09-12T00:46:22.865Z" },
+    { url = "https://files.pythonhosted.org/packages/ed/c6/ad1431751ff1969a132323f6e2797ec38ccdf9d0a53aabb45d79221092a4/componentize_py-0.25.1-cp39-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:8623cd8cab8453cb0cd8bf03f3c7103420d06f2f3d360186a280a70a1ca5e89f", size = 17122694, upload-time = "2026-09-12T00:46:30.3Z" },
+    { url = "https://files.pythonhosted.org/packages/4b/60/5b08715534795d84feec8ec8ae50599681ea1199ee7b300ad072fdcd24af/componentize_py-0.25.1-cp39-abi3-win_amd64.whl", hash = "sha256:c7fd552fb0849858b0c1e8981543ed5dff4b0cc1597a8ea0bc26a495786dc0c6", size = 15285843, upload-time = "2026-09-12T00:46:37.399Z" },
+]
