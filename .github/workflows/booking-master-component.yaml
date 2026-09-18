@@ -60,7 +60,7 @@ jobs:
           path: kubernetes/components/booking-master/build/booking_master_s.wasm
 
   booking-master-publish:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: [booking-master-build]
     if: ${{ startswith(github.ref, 'refs/tags/booking-master-component-v') }}
     permissions:
