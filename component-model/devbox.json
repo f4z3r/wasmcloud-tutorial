@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.15.1/.schema/devbox.schema.json",
   "packages": [
-    "python@3.14",
-    "uv@0.8.14",
-    "rustup@1.28.2",
-    "cargo@1.89.0",
+    "python@3.15",
+    "uv@0.13.5",
+    "rustup@1.29.2",
+    "cargo@1.99.0",
     "wasmtime@39.0.1",
     "cargo-component@0.21.1",
-    "wasm-tools@1.239.0",
-    "wac-cli@latest"
+    "wasm-tools@1.262.0",
+    "wac-cli@0.12.0"
   ],
   "shell": {
     "init_hook": [
